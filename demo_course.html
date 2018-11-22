@@ -8,6 +8,7 @@
     <link href="stylesheet/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Spectral|Rajdhani">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
@@ -26,8 +27,40 @@
         <h1 class="topic-head">Topic: Text Mining</h1>
         <h2>Lecture 1 - Introduction to Text Mining</h2>
         <h3>Overview</h3>
-        <iframe width="840" height="500" src="https://www.youtube.com/embed/I3cjbB38Z4A">
-        </iframe>
+        <p>
+            This lecture will answer questions including what is text mining, applications of text mining, 
+            and the big picture of predictive as well as exploratory analysis of text. Also, this lecture includes 
+            a sample application of topic categorization and visualization and a hands-on practce to trigger
+            better and deeper understanding.
+        </p>
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/I3cjbB38Z4A"></iframe>
+        </div>
+        <h3>Review questions</h3>
+        <span class="course-question"><i class="fas fa-plus"></i> What is token and wokenization?</span>
+        <div class="course-answer">
+            Token is a unit of text analysis, usually a word or other atomic parse element.
+            And tokenization is the process of splitting text into terms of tokens.
+        </div>
+        <h3>Materials</h3>
+        <table>
+            <tr>
+                <td>Slide</td>
+                <td>Transcript</td>
+                <td>Video</td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="materials/text-mining/slides/1.TextMining.Introduction.pdf" download>pdf</a>
+                </td>
+                <td>
+                    <a href="#" download="">txt</a>
+                </td>
+                <td>
+                    <a href="#" download>mp4</a>
+                </td>
+            </tr>
+        </table>
     </section>
     <footer>
         <div class="footer-col1">
@@ -54,5 +87,18 @@
             <p>Phone: 919.962.2208</p>
         </div>
     </footer>
+    <script>
+        $(document).ready(() => {
+            $(".course-question").click(() =>{
+                $(".course-answer").toggle(100, () => {
+                    if ($(".course-question i").attr("class") === "fas fa-plus") {
+                        $(".course-question i").attr("class", "fas fa-minus");
+                    } else {
+                        $(".course-question i").attr("class", "fas fa-plus");
+                    }
+                })
+            })
+        })
+    </script>
 </body>
 </html>
