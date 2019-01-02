@@ -157,6 +157,10 @@ footer {
     margin-top: -2em;
   }
   
+.slideshow-caption {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
 .mySlides {
     /* display: none; */
     width: 100%;
