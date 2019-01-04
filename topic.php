@@ -33,7 +33,6 @@
             }
         }
     ?>
-
     <div class="topic-nav">
         <ul>
             <li>ABOUT</li>
@@ -51,80 +50,54 @@
             if ($result = $mysqli->query($query)) {
                 while ($row = $result->fetch_assoc()) { 
                     echo "<p>" . $row['about']. "</p>";
+                    // --------- Course material ----------
+                    echo "<h2>Course Materials</h2>" . 
+                        "<p>Download zip file of all slides, data sets and tools here.</p>";
+                    echo "<a href='materials/topic-". $row['topic_id'] .
+                        ".zip' download>topic-" . $row['topic_id'] . ".zip</a>";
                 }
             }
         ?>
-        <p>
-            This course aims at helping students to gain experience with both theoritical
-            and practical knowledge about text mining. The content covers text representation, 
-            feature selection, algorithms, evaluation and clustering. Multiple training and tesing 
-            data sets are provided along with text mining tools built in Python.
-        </p>
-        <h2>Course Materials</h2>
-        <p>Download zip file of all slides, data sets and tools here.</p>
-        <a href="materials/text-mining.zip" download>text-mining.zip</a>
     </div>
     <div id="show-syllabus" class="show-course">
         <h1>Syllabus</h1>
         <h2>Lecturer</h2>
-        <p>
-            Heejun Kim, Ph.D. candidate at the School of Information and Library Science at University
-            of North Carolina at Chapel Hill.
-        </p>
-        <h2>Description</h2>
-        <p>
-            Changes in technology and publishing practices have eased the task of recording and sharing 
-            textual information electronically. This increased quantity of information has spurred the 
-            development of a new field called text mining. The overarching goal of this new field is to
-                use computers to automatically learn new things from textual data.
-        </p>
-        <h2>Requirements</h2>
-        <p>
-            Students should have a reasonable programming background and be able to design, implement,
-            debug and test medium sized programs.
-        </p>
-        <h2>Grading</h2>
-        <p>
-            10% Class participation <br>
-            40% Homework <br>
-            50% Project <br>
-        </p>
+        <?php 
+            if ($result = $mysqli->query($query)) {
+                while ($row = $result->fetch_assoc()) { 
+                    echo "<p>" . $row['lecturer']. ". " . $row['lecturer_description'] ."</p>";
+                    // --------- Description ----------
+                    echo "<h2>Description</h2>";
+                    echo "<p>" . $row['topic_description'] . "</p>";
+                    // --------- Requirements ----------
+                    echo "<h2>Requirements</h2>";
+                    echo "<p>". $row['requirements'] ."</p>";
+                    // --------- Grading ----------
+                    echo "<h2>Grading</h2>";
+                    echo "<p>". $row['grading'] ."</p>";
+                }
+            }
+        ?>
     </div>
     <div id="show-session" class="show-course">
         <h1>Sessions</h1>
         <table>
-            <tr>
-                <td>Lecture 1</td>
-                <td><a href="demo_course.html">Introduction to Text Mining</a></td>
-            </tr>
-            <tr>
-                <td>Lecture 2</td>
-                <td>Predictive Analysis of Text: Concepts, Instances, and Classifiers</td>
-            </tr>
-            <tr>
-                <td>Lecture 3</td>
-                <td>Text Representation</td>
-            </tr>
-            <tr>
-                <td>Lecture 4</td>
-                <td>Feature Selection</td>
-            </tr>
-            <tr>
-                <td>Lecture 5</td>
-                <td>Naive Bayes Algorithm</td>
-            </tr>
-            <tr>
-                <td>Lecture 6</td>
-                <td>Instance-Based Learning Algorithm</td>
-            </tr>
-            <tr>
-                <td>Lecture 7</td>
-                <td>Evaluation</td>
-            </tr>
-            <tr>
-                <td>Lecture 8</td>
-                <td>Clustering</td>
-            </tr>        
+            <?php 
+                if ($result = $mysqli->query($query)) {
+                    while ($row = $result->fetch_assoc()) { 
+                        $query2 = "SELECT * FROM course WHERE topic_id = " . $row['topic_id'];
+                        $index = 1;
+                        if ($result2 = $mysqli->query($query2)) {
+                            while ($row2 = $result2->fetch_assoc()) {
+                                echo "<tr><td>Lecture " . $index . "</td>";
+                                echo "<td><a href='course.php?course=" . $row2['course_id'] . "'>" . 
+                                     $row2['course_name'] . "</a></td></tr>"; 
+                                $index += 1;
+                            }
+                        }
+                    }
+                }
+            ?>         
         </table>
     </div>
 </section>
