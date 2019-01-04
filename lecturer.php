@@ -16,31 +16,31 @@
     </header>
     <nav>
         <ul>
-            <li><a href="demo_home.html">Home</a></li>
-            <li><a href="demo_courses.html">Courses</a></li>
-            <li><a href="demo_lecturers.html">Lecturers</a></li>
+            <li><a href="home.php">Home</a></li>
+            <li><a href="topics.php">Topics</a></li>
+            <li><a href="lecturer.php">Lecturers</a></li>
             <li><a href="https://enable.unc.edu/">ENABLE Project</a></li>
         </ul>
     </nav>
     <section>
         <h1 class="topic-head">Lecturers</h1>
         <div class="lecturer-2-col">
-            <img src="./image/lecturer/heejun.jpg">
-            <div>
-                <h2>Heejun Kim</h2>
-                <p>
-                    Ph.D. candidate at the School of Information and Library Science(SILS) 
-                    at University of North Carolina at Chapel Hill. Broad research interests include:
-                    text mining, machine learning, information retrieval, health informatics, 
-                    human-computer interaction, and geographic information science. Dissertation study aims 
-                    to automatically predict the credibility of health information on social media.
-                    <a href="http://heejunkim.web.unc.edu/">View Portfolio</a>
-                </p>
-            </div>
+            <?php
+                require "dbconnect.php";
+                $query = "SELECT * FROM lecturer";
+                if ($result = $mysqli->query($query)) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<img src='./image/lecturer/lecturer" . $row['lecturer_id'] . ".jpg'>";
+                        echo "<div><h2>" . $row['lecturer_name'] . "</h2>";
+                        echo "<p>" . $row['about'];
+                        if ($row['url'] != "") {
+                            echo "<a href='" . $row['url'] . "'>View Portfolio</a>";
+                        }
+                        echo "</p></div>";
+                    }
+                }
+            ?>
         </div>
-       
-    
- 
     </section>
     <footer>
         <div class="footer-col1">
@@ -72,18 +72,5 @@
             <p>Phone: 919.962.2208</p>
         </div>
     </footer>
-    <script>
-        $(document).ready(() => {
-            $(".course-question").click(() =>{
-                $(".course-answer").toggle(100, () => {
-                    if ($(".course-question i").attr("class") === "fas fa-plus") {
-                        $(".course-question i").attr("class", "fas fa-minus");
-                    } else {
-                        $(".course-question i").attr("class", "fas fa-plus");
-                    }
-                })
-            })
-        })
-    </script>
 </body>
 </html>

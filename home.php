@@ -16,9 +16,9 @@
     </header>
     <nav>
         <ul>
-            <li><a href="demo_home.html">Home</a></li>
-            <li><a href="demo_courses.html">Courses</a></li>
-            <li><a href="demo_lecturers.html">Lecturers</a></li>
+            <li><a href="home.php">Home</a></li>
+            <li><a href="topics.php">Topics</a></li>
+            <li><a href="lecturer.php">Lecturers</a></li>
             <li><a href="https://enable.unc.edu/">ENABLE Project</a></li>
         </ul>
     </nav>
@@ -85,61 +85,6 @@
             and/or public health. At the end of boot camp, the students give presentations on their 
             projects and reflect on their experience in gaining critical BMHI skills.
         </p>
-        <h1>Curriculum at a glance</h1>
-        <table>
-            <tr>
-                <td>Topic</td>
-                <td>Course</td>
-                <td>Lecturer</td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="demo_courses.html">Text Mining</a>
-                </td>
-                <td>
-                    <a href="demo_course.html">Introduction to Text Mining</a>
-                    <br>Predictive Analysis of Text: Concepts, Instancesm and Classifiers
-                    <br>Text Representation
-                    <br>Feature Selection
-                    <br>Naive Bayes Algorithm
-                    <br>Instance-Based Learning Algorithm
-                    <br>Evaluation
-                    <br>Clustering
-                </td>
-                <td>
-                    <a href="http://heejunkim.web.unc.edu/">Heejun Kim</a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a>Genomics</a>
-                </td>
-                <td>
-                    <a>Introduction to Genomics</a>
-                    <br>Feature Extraction
-                    <br>Omics
-                    <br>Pipelines
-                    <br>Classification with Dependency
-                </td>
-                <td>
-                    Malvika Pillai
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a>Medical Imaging</a>
-                </td>
-                <td>
-                    <a>Introduction to Visual Systems</a>
-                    <br>Modalities
-                    <br>Digitizaton
-                    <br>Magnetic Resonance Imaging Applications, Predictions
-                </td>
-                <td>
-                    Vincent Carrasco
-                </td>
-            </tr>
-        </table>
     </section>
     <footer>
         <div class="footer-col1">
