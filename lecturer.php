@@ -6,7 +6,7 @@
     <link rel="Shortcut Icon" href="image/logo.png">
     <title>ENABLE Lecturers</title>
     <link href="stylesheet/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Spectral|Rajdhani|Raleway">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dosis">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 </head>
@@ -16,10 +16,10 @@
     </header>
     <nav>
         <ul>
-            <li><a href="home.php">Home</a></li>
-            <li><a href="topics.php">Topics</a></li>
-            <li><a href="lecturer.php">Lecturers</a></li>
-            <li><a href="https://enable.unc.edu/">ENABLE Project</a></li>
+            <li><a href="home.php">HOME</a></li>
+            <li><a href="topics.php">TOPICS</a></li>
+            <li><a href="lecturer.php">LECTURES</a></li>
+            <li><a href="https://enable.unc.edu/">ENABLE PROJECT</a></li>
         </ul>
     </nav>
     <section>
