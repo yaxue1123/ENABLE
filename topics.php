@@ -8,7 +8,7 @@
     <link href="stylesheet/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dosis">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </head>
 <body>
     <header>
@@ -20,6 +20,7 @@
             <li><a href="topics.php">TOPICS</a></li>
             <li><a href="lecturer.php">LECTURES</a></li>
             <li><a href="https://enable.unc.edu/">ENABLE PROJECT</a></li>
+            <li><a href="login.php">LOGIN</a></li>
         </ul>
     </nav>
     <section>

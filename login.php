@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="Shortcut Icon" href="image/logo.png">
-    <title>ENABLE Lecturers</title>
+    <title>ENABLE Administrator Portal</title>
     <link href="stylesheet/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dosis">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -24,24 +25,43 @@
         </ul>
     </nav>
     <section>
-        <h1 class="topic-head">Lecturers</h1>
-        <div class="lecturer-2-col">
+    <form method="post" action="login.php" class="form-signin">
+        <h1>Please sign in</h1>
+        <input type="text" name="uname" placeholder="username">
+        <input type="password" name="upass" placeholder="password">
+        <button type="submit" value="Log in">Log in</button>
+        <p class="warning">
             <?php
-                require "dbconnect.php";
-                $query = "SELECT * FROM lecturer";
-                if ($result = $mysqli->query($query)) {
+            require "dbconnect.php";
+            if (isset($_POST['uname']) && isset($_POST['upass'])) {
+                // if username and password are both input
+                // sanitize user input to prevent MySQL injection
+                $uname = addslashes($_POST['uname']);
+                $upass = sha1(addslashes($_POST['upass']));
+                $sql = "SELECT uname FROM users WHERE uname='" . $uname . "' AND upass= '" . $upass . "'";
+
+                if ($result = $mysqli->query($sql)) {
                     while ($row = $result->fetch_assoc()) {
-                        echo "<img src='./image/lecturer/lecturer" . $row['lecturer_id'] . ".jpg'>";
-                        echo "<div><h2>" . $row['lecturer_name'] . "</h2>";
-                        echo "<p>" . $row['about'];
-                        if ($row['url'] != "") {
-                            echo "<a href='" . $row['url'] . "'>View Portfolio</a>";
-                        }
-                        echo "</p></div>";
+                        // use super global variable to store user name?>
+
+                        <script> window.location.href="home.php";</script>
+                    
+                    <?php
                     }
                 }
+
+                if (isset($_SESSION['valid_user'])) {
+                    // direct to result page if the user is valid}
+                    echo "hello";
+                } else {
+                    // failed to login, show warning message and prompt user to input right uname and pwd again
+                    echo "Please enter right username and password";
+                    exit;
+                }
+            }
             ?>
-        </div>
+        </p>
+    </form>
     </section>
     <footer>
         <div class="footer-col1">
@@ -59,7 +79,7 @@
                 <a href="https://www.facebook.com/unc.enable/" class="footer-icon"><i class="fab fa-facebook-square fa-2x"></i></a>
                 <a href="https://www.instagram.com/enable.unc/" class="footer-icon"><i class="fab fa-instagram fa-2x"></i></a>
             </p> 
-            <p>Copyright © 2018 ENABLE</p>
+            <p>Copyright © 2019 ENABLE</p>
         </div>
         <div class="footer-col2">
             <p>
