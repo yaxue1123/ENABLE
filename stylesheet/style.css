@@ -67,7 +67,7 @@ a {
 
 section {
     width: 70%;
-    margin: 2em 15%;
+    margin: 0 15%;
 }
 
 h1 {
@@ -274,6 +274,8 @@ footer {
     border: 1px solid transparent;
     font-size: 1rem;
     color: #fff;
+    margin-top: 1em;
+    margin-bottom: 1em;
   }
   
   .btn-primary{
@@ -296,3 +298,15 @@ footer {
     margin-right: 2em;
     width: 100%;
   }
+
+.form-signin {
+    padding: 5% 30%;
+}
+
+.form-signin button {
+    width: 50%;
+}
+
+.form-signin input {
+    margin: 1em 0;
+}

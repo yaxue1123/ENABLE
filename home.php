@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="Shortcut Icon" href="image/logo.png">
     <title>ENABLE Online Learning</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link href="stylesheet/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dosis">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -24,50 +27,46 @@
         </ul>
     </nav>
     <section>
-        <div class="slideshow-container">
-            <div class="mySlides fade">
-                <img src="image/home_1-min.jpg" width="100%">
-                <div class="slideshow-caption-container">
-                    <p class="slideshow-caption"> 
-                        Learn about Health Informatics, Data Analytics and Visualization here.
-                    </p>
-                    <p>
-                        <a class="btn btn-primary" href="https://enable.unc.edu/apply-to-summer-bootcamp/">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                <img src="image/home_1-min.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3 class="slideshow-caption"> Learn about Health Informatics, Data Analytics and Visualization here.</h3>
+                    <a class="btn btn-primary" href="https://enable.unc.edu/apply-to-summer-bootcamp/">
                             Apply to Boot Camp</a>
-                    </p>
+                </div>
+                </div>
+                <div class="carousel-item">
+                <img src="image/home_2-min.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3 class="slideshow-caption"> Gain knowledge of principles of biomedical health informatics.</h3>
+                    <a class="btn btn-primary" href="https://enable.unc.edu/apply-to-summer-bootcamp/">
+                            Apply to Boot Camp</a>
+                </div>
+                </div>
+                <div class="carousel-item">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3 class="slideshow-caption"> Explore advanced traning and careers in biomedical health informatics field.</h3>
+                    <a class="btn btn-primary" href="https://enable.unc.edu/apply-to-summer-bootcamp/">
+                            Apply to Boot Camp</a>
+                </div>
+                <img src="image/home_3-min.jpg" class="d-block w-100" alt="...">
                 </div>
             </div>
-            <div class="mySlides fade">
-                <img src="image/home_2-min.jpg" width="100%">
-                <div class="slideshow-caption-container">
-                    <p class="slideshow-caption"> 
-                        Gain knowledge of principles of biomedical health informatics.
-                    </p>
-                    <p>
-                        <a class="btn btn-primary" href="https://enable.unc.edu/apply-to-summer-bootcamp/">
-                            Apply to Boot Camp</a>
-                    </p>
-                </div>
-            </div>
-            <div class="mySlides fade">
-                <img src="image/home_3-min.jpg" width="100%">
-                <div class="slideshow-caption-container">
-                    <p class="slideshow-caption"> 
-                        Explore advanced traning and careers in biomedical health informatics field.
-                    </p>
-                    <p>
-                        <a class="btn btn-primary" href="https://enable.unc.edu/apply-to-summer-bootcamp/">
-                            Apply to Boot Camp</a>
-                    </p>
-                </div>
-            </div>
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-            <div class="dot-container">
-                <span class="dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-                <span class="dot" onclick="currentSlide(3)"></span>
-            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
         <p>
             The <a href="https://enable.unc.edu/summer-bootcamp/">Health Informatics, Data Analytics, 
@@ -117,50 +116,5 @@
             <p>Phone: 919.962.2208</p>
         </div>
     </footer>
-    <script>
-        var slideIndex = 1;
-        showSlides(slideIndex);
-
-        // Next/previous controls
-        function plusSlides(n) {
-        showSlides(slideIndex += n);
-        }
-
-        // Thumbnail image controls
-        function currentSlide(n) {
-        showSlides(slideIndex = n);
-        }
-
-        function showSlides(n) {
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-        var dots = document.getElementsByClassName("dot");
-        if (n > slides.length) { slideIndex = 1 }
-        if (n < 1) { slideIndex = slides.length }
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-        }
-
-        // drop-down menu
-        document.querySelectorAll(".dropbtn").forEach(function(el){
-        el.addEventListener("click",function(e){
-            var el = e.currentTarget.nextElementSibling;
-
-            if (el.classList.contains("dropdown-content-show")){
-                el.classList.remove("dropdown-content-show");
-                el.classList.add("dropdown-content");
-            } else{
-                el.classList.remove("dropdown-content");
-                el.classList.add("dropdown-content-show");
-            }
-        });
-        });
-    </script>
 </body>
 </html>
