@@ -45,19 +45,8 @@ ul {
     padding: 0;
 }
 
-ul li {
-    padding-right: 1.5em;
-    cursor: default;
-}
-
 ul li a {
     color: inherit;
-    text-decoration: none;
-}
-
-ul li a:hover {
-    color: #aaa;
-    text-decoration: none;
 }
 
 a {
@@ -65,9 +54,13 @@ a {
     color: #4B9CD3;
 }
 
+a:hover {
+    color: rgb(191, 208, 214);
+}
+
 section {
     width: 70%;
-    margin: 0 15%;
+    margin: 0 15% 5% 15%;
 }
 
 h1 {
@@ -77,6 +70,11 @@ h1 {
 
 h2 {
     font-size: 1.3em;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.3);
+    bottom: 25%;
 }
 
 .show-course {
@@ -158,108 +156,6 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-}
-
-/* Slideshow container */
-.slideshow-container {
-    max-width: 100%;
-    position: relative;
-    margin-top: -2em;
-  }
-  
-.slideshow-caption {
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
-.mySlides {
-    /* display: none; */
-    width: 100%;
-}
-
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 1.125em;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-}
-
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-.prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.8);
-}
-
-.dot-container{
-    text-align: center;
-    position: absolute;
-    bottom: 1%;
-    padding: 7px;
-    left: 0;
-    right: 0;
-    margin: auto;
-}
-
-.dot {
-    cursor: pointer;
-    height: 1em;
-    width: 1em;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-    background-color: #717171;
-}
-
-.slideshow-caption-container{
-    color: #FFF;
-    /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
-    text-align: center;
-    width: 90%;
-    position: absolute;
-    top: 30%;
-    padding: 10px;
-    margin: auto;
-    margin-left: 5%;
-    font-size: 2em;
-    line-height: 150%;
-}
-
-
-.slideshow-caption-container a{
-    text-decoration: none;
-    text-shadow: none;
-}
-
-/* Fading animation */
-.fade {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
-    animation-name: fade;
-    animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
-}
-
-@keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
 }
 
 /* button */

@@ -20,12 +20,29 @@
         <img src="image/enable-banner.png" alt="ENABLE banner">
     </header>
     <nav>
-        <ul>
-            <li><a href="home.php">HOME</a></li>
-            <li><a href="topics.php">TOPICS</a></li>
-            <li><a href="lecturer.php">LECTURES</a></li>
-            <li><a href="https://enable.unc.edu/">ENABLE PROJECT</a></li>
-            <li><a href="login.php">LOGIN</a></li>
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link active" href="home.php">HOME</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="topics.php" role="button" aria-haspopup="true" aria-expanded="false">TOPICS</a>
+                <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">TEXT MINING</a>
+                <a class="dropdown-item" href="#">GENOMICS</a>
+                <a class="dropdown-item" href="#">MEDICAL IMAGING</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="topics.php">ALL TOPICS</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="lecturer.php">LECTURERS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://enable.unc.edu/">ENABLE PROJECT</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="login.php">LOGIN</a>
+            </li>
         </ul>
     </nav>
     <section>

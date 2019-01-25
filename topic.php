@@ -1,26 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="Shortcut Icon" href="image/logo.png">
-<title>ENABLE Topic</title>
-<link href="stylesheet/style.css" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dosis">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="Shortcut Icon" href="image/logo.png">
+    <title>ENABLE Online Learning</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="stylesheet/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dosis">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </head>
 <body>
 <header>
     <img src="image/enable-banner.png" alt="ENABLE banner">
 </header>
 <nav>
-    <ul>
-        <li><a href="home.php">HOME</a></li>
-        <li><a href="topics.php">TOPICS</a></li>
-        <li><a href="lecturer.php">LECTURES</a></li>
-        <li><a href="https://enable.unc.edu/">ENABLE PROJECT</a></li>
-        <li><a href="login.php">LOGIN</a></li>
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" href="home.php">HOME</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="topics.php" role="button" aria-haspopup="true" aria-expanded="false">TOPICS</a>
+            <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">TEXT MINING</a>
+            <a class="dropdown-item" href="#">GENOMICS</a>
+            <a class="dropdown-item" href="#">MEDICAL IMAGING</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="topics.php">ALL TOPICS</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="lecturer.php">LECTURERS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="https://enable.unc.edu/">ENABLE PROJECT</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="login.php">LOGIN</a>
+        </li>
     </ul>
 </nav>
 <section>
