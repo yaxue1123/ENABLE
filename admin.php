@@ -57,11 +57,103 @@
             </div>
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade show active" id="v-pills-add-topic" role="tabpanel" aria-labelledby="v-pills-add-topic-tab">...</div>
+                    <div class="tab-pane fade show active" id="v-pills-add-topic" role="tabpanel" aria-labelledby="v-pills-add-topic-tab">        
+                        <form>
+                            <div class="form-group">
+                                <label for="topic-name">Topic Name</label>
+                                <input type="email" class="form-control" id="topic-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="topic-lecturer">Lecturer</label>
+                                <select class="form-control" id="topic-lecturer">
+                                <option>Heejun Kim</option>
+                                <option>Malvika Pillai</option>
+                                <option>Vincent Carrasco</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="topic-description">Description</label>
+                                <textarea class="form-control" id="topic-description" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="topic-requirement">Requirements</label>
+                                <textarea class="form-control" id="topic-requirement" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="topic-grade">Grading Criteria</label>
+                                <textarea class="form-control" id="topic-grade" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="topic-material">Upload Topic Materials</label>
+                                <input type="file" class="form-control-file" id="topic-material">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
                     <div class="tab-pane fade" id="v-pills-edit-topic" role="tabpanel" aria-labelledby="v-pills-edit-topic-tab">...</div>
-                    <div class="tab-pane fade" id="v-pills-add-course" role="tabpanel" aria-labelledby="v-pills-add-course-tab">...</div>
+                    <div class="tab-pane fade" id="v-pills-add-course" role="tabpanel" aria-labelledby="v-pills-add-course-tab">
+                        <form>
+                            <div class="form-group">
+                                <label for="course-name">Course Name</label>
+                                <input type="email" class="form-control" id="course-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="course-topic">Topic</label>
+                                <select class="form-control" id="course-topic">
+                                <option>Texting Mining</option>
+                                <option>Genomics</option>
+                                <option>Vicent Carrasco</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="course-description">Overview Description</label>
+                                <textarea class="form-control" id="course-description" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="course-review-question">Review Questions</label>
+                                <textarea class="form-control" id="course-review-question" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="course-slide">Upload Slide</label>
+                                <input type="file" class="form-control-file" id="course-slide">
+                            </div>
+                            <div class="form-group">
+                                <label for="course-transcript">Upload Transcript</label>
+                                <input type="file" class="form-control-file" id="course-transcript">
+                            </div>
+                            <div class="form-group">
+                                <label for="course-video">Upload Video</label>
+                                <input type="file" class="form-control-file" id="course-video">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
                     <div class="tab-pane fade" id="v-pills-edit-course" role="tabpanel" aria-labelledby="v-pills-edit-course-tab">...</div>
-                    <div class="tab-pane fade" id="v-pills-add-lecturer" role="tabpanel" aria-labelledby="v-pills-add-lecturer-tab">...</div>
+                    <div class="tab-pane fade" id="v-pills-add-lecturer" role="tabpanel" aria-labelledby="v-pills-add-lecturer-tab">
+                        <form>
+                            <div class="form-group">
+                                <label for="lecturer-name">Lecturer Name</label>
+                                <input class="form-control" id="lecturer-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="lecturer-pronouns">Pronouns</label>
+                                <select class="form-control" id="lecturer-pronouns">
+                                <option>He/Him/His</option>
+                                <option>She/Her/Hers</option>
+                                <option>Ze/Zir/Zirs</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="lecturer-description">Short Bio</label>
+                                <textarea class="form-control" id="lecturer-description" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="lecturer-portfolio">Portfolio Website</label>
+                                <input class="form-control" id="lecturer-portfolio">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
                     <div class="tab-pane fade" id="v-pills-edit-lecturer" role="tabpanel" aria-labelledby="v-pills-edit-lecturer-tab">...</div>
                 </div>
             </div>
@@ -98,4 +190,4 @@
         </div>
     </footer>
 </body>
-</html>
+</html> 
