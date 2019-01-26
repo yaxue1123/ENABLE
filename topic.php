@@ -54,55 +54,45 @@
             }
         }
     ?>
-    <div class="topic-nav">
-        <ul>
-            <li>ABOUT</li>
-            <li>SYLLABUS</li>
-            <li>SESSIONS</li>
-            <li>DATA</li>
-            <li>TOOLS</li>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">SYLLABUS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">SESSION</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">DOWNLOAD</a>
+        </li>
         </ul>
-    </div>
-
-    <div id="show-about" class="show-course">
-        <img src="image/text-mining.jpg" alt="text mining" class="topic-img">
-        <h2>About the Course</h2>
-        <?php 
-            if ($result = $mysqli->query($query)) {
-                while ($row = $result->fetch_assoc()) { 
-                    echo "<p>" . $row['about']. "</p>";
-                    // --------- Course material ----------
-                    echo "<h2>Course Materials</h2>" . 
-                        "<p>Download zip file of all slides, data sets and tools here.</p>";
-                    echo "<a href='materials/topic-". $row['topic_id'] .
-                        ".zip' download>topic-" . $row['topic_id'] . ".zip</a>";
+        <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <h1>Syllabus</h1>
+            <?php 
+                if ($result = $mysqli->query($query)) {
+                    while ($row = $result->fetch_assoc()) { 
+                        // --------- About ----------
+                        echo "<h2>About the Course</h2>";
+                        echo "<p>" . $row['about']. "</p>";
+                        // --------- Lecturer ----------
+                        echo "<h2>Lecturer</h2>";
+                        echo "<p>" . $row['lecturer']. ". " . $row['lecturer_description'] ."</p>";
+                        // --------- Description ----------
+                        echo "<h2>Description</h2>";
+                        echo "<p>" . $row['topic_description'] . "</p>";
+                        // --------- Requirements ----------
+                        echo "<h2>Requirements</h2>";
+                        echo "<p>". $row['requirements'] ."</p>";
+                        // --------- Grading ----------
+                        echo "<h2>Grading</h2>";
+                        echo "<p>". $row['grading'] ."</p>";
+                    }
                 }
-            }
-        ?>
-    </div>
-    <div id="show-syllabus" class="show-course">
-        <h1>Syllabus</h1>
-        <h2>Lecturer</h2>
-        <?php 
-            if ($result = $mysqli->query($query)) {
-                while ($row = $result->fetch_assoc()) { 
-                    echo "<p>" . $row['lecturer']. ". " . $row['lecturer_description'] ."</p>";
-                    // --------- Description ----------
-                    echo "<h2>Description</h2>";
-                    echo "<p>" . $row['topic_description'] . "</p>";
-                    // --------- Requirements ----------
-                    echo "<h2>Requirements</h2>";
-                    echo "<p>". $row['requirements'] ."</p>";
-                    // --------- Grading ----------
-                    echo "<h2>Grading</h2>";
-                    echo "<p>". $row['grading'] ."</p>";
-                }
-            }
-        ?>
-    </div>
-    <div id="show-session" class="show-course">
-        <h1>Sessions</h1>
-        <table>
+            ?>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <h1>Sessions</h1>
+            <table>
             <?php 
                 if ($result = $mysqli->query($query)) {
                     while ($row = $result->fetch_assoc()) { 
@@ -112,17 +102,31 @@
                             while ($row2 = $result2->fetch_assoc()) {
                                 echo "<tr><td>Lecture " . $index . "</td>";
                                 echo "<td><a href='course.php?course=" . $row2['course_id'] . "'>" . 
-                                     $row2['course_name'] . "</a></td></tr>"; 
+                                    $row2['course_name'] . "</a></td></tr>"; 
                                 $index += 1;
                             }
                         }
                     }
                 }
             ?>         
-        </table>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <?php 
+                if ($result = $mysqli->query($query)) {
+                    while ($row = $result->fetch_assoc()) { 
+                        // --------- Course material ----------
+                        echo "<h2>Course Materials</h2>" . 
+                            "<p>Download zip file of all slides, data sets and tools here.</p>";
+                        echo "<a href='materials/topic-". $row['topic_id'] .
+                            ".zip' download>topic-" . $row['topic_id'] . ".zip</a>";
+                    }
+                }
+            ?>
+        </div>
     </div>
 </section>
-    <footer>
+<footer>
     <div class="footer-col1">
         <a href="https://chip.unc.edu/">
             <img src="image/chip-banner.png" alt="CHIP banner" height="40px">
@@ -152,29 +156,5 @@
         <p>Phone: 919.962.2208</p>
     </div>
 </footer>
-<script>
-    $(document).ready(() => {
-        $(".topic-nav ul li:first-child").css("text-decoration", "overline");
-
-        $(".topic-nav li").click(function() {
-            // remove former style.
-            $(".show-course").css("display", "none");
-            $("ul li").css("text-decoration", "none");
-            // hightlight selected li and show section accordingly.
-            $(this).css("text-decoration", "overline");
-            switch ($(this).text()) {
-                case 'ABOUT': 
-                    $("#show-about").css("display", "block");
-                    break;
-                case 'SYLLABUS':
-                    $("#show-syllabus").css("display", "block");
-                    break;
-                case 'SESSIONS':
-                    $("#show-session").css("display", "block");
-                    break;
-            }            
-        })
-    });
-</script>
 </body>
 </html>

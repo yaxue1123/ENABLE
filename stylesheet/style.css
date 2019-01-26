@@ -34,6 +34,11 @@ nav {
     color: #fff;
 }
 
+p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
 ul {
     display: flex;
     flex-wrap: wrap;
@@ -66,10 +71,14 @@ section {
 h1 {
     font-size: 2em;
     color: #13294B;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 h2 {
     font-size: 1.3em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .carousel-caption {
@@ -77,9 +86,6 @@ h2 {
     bottom: 25%;
 }
 
-.show-course {
-    margin: 2em auto;
-}
 
 table {
     border-collapse: collapse;
@@ -93,10 +99,6 @@ td {
 
 tr:nth-child(even) {
     background-color: rgb(216, 220, 221);
-}
-
-.topic-nav {
-    border-bottom: 1px solid #A2AAAD;
 }
 
 footer {
@@ -205,4 +207,13 @@ footer {
 
 .form-signin input {
     margin: 1em 0;
+}
+
+/******************** Admin Portal *******************/
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: #4B9CD3;
+}
+
+.admin-view {
+    padding: 3% 0;
 }
