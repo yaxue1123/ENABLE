@@ -92,7 +92,7 @@
         </div>
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <h1>Sessions</h1>
-            <table>
+            <table class="table table-striped">
             <?php 
                 if ($result = $mysqli->query($query)) {
                     while ($row = $result->fetch_assoc()) { 

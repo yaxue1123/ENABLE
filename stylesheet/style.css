@@ -81,24 +81,14 @@ h2 {
     margin-bottom: 1em;
 }
 
+h3 {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
 .carousel-caption {
     background-color: rgba(0, 0, 0, 0.3);
     bottom: 25%;
-}
-
-
-table {
-    border-collapse: collapse;
-}
-
-td {
-    border: 1px solid #A2AAAD;
-    text-align: center;
-    padding: .5em;
-}
-
-tr:nth-child(even) {
-    background-color: rgb(216, 220, 221);
 }
 
 footer {

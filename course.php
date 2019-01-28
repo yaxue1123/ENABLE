@@ -63,7 +63,7 @@
             And tokenization is the process of splitting text into terms of tokens.
         </div>
         <h3>Materials</h3>
-        <table>
+        <table class="table table-striped">
             <tr>
                 <td>Slide</td>
                 <td>Transcript</td>

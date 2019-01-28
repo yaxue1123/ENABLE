@@ -45,7 +45,7 @@
     </nav>
     <section>
         <h1>Curriculum at a glance</h1>
-        <table>
+        <table class="table table-striped">
             <tr>
                 <td>Topic</td>
                 <td>Course</td>
