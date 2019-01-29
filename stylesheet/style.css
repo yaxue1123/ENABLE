@@ -86,6 +86,11 @@ h3 {
     margin-bottom: 1em;
 }
 
+.table td, .table th {
+    vertical-align: middle;
+    padding: 0.5em .75em;
+}
+
 .carousel-caption {
     background-color: rgba(0, 0, 0, 0.3);
     bottom: 25%;

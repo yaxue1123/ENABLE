@@ -6,12 +6,12 @@
     <link rel="Shortcut Icon" href="image/logo.png">
     <title>ENABLE Online Learning</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link href="stylesheet/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dosis">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link href="stylesheet/style.css" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -90,7 +90,29 @@
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-edit-topic" role="tabpanel" aria-labelledby="v-pills-edit-topic-tab">...</div>
+                    <div class="tab-pane fade" id="v-pills-edit-topic" role="tabpanel" aria-labelledby="v-pills-edit-topic-tab">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>Topic</td>
+                                <td>Lecturer</td>
+                                <td>Edit</td>
+                            </tr>
+                            <?php
+                                require "dbconnect.php";
+                                $query_edit_topic = "SELECT * FROM curriculum";
+                                if ($result_edit_topic = $mysqli->query($query_edit_topic)) {
+                                    while ($row_edit_topic = $result_edit_topic->fetch_assoc()) {
+                                        // --------- Topic Name ----------
+                                        echo "<tr><td><a href=topic.php?topic=" . $row_edit_topic['topic_id'] . ">" . $row_edit_topic['topic_name'] . "</a></td>";
+                                        // --------- Topic Lecturer ----------
+                                        echo "<td>" . $row_edit_topic['lecturer'] . "</td>";
+                                        // --------- Edit Button ----------
+                                        echo"<td><button class='btn btn-primary' id='topic-" . $row_edit_topic['topic_id'] . "'>". "Edit</button></td></tr>";
+                                    }
+                                }
+                            ?>
+                        </table>
+                    </div>
                     <div class="tab-pane fade" id="v-pills-add-course" role="tabpanel" aria-labelledby="v-pills-add-course-tab">
                         <form>
                             <div class="form-group">
@@ -128,7 +150,38 @@
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-edit-course" role="tabpanel" aria-labelledby="v-pills-edit-course-tab">...</div>
+                    <div class="tab-pane fade" id="v-pills-edit-course" role="tabpanel" aria-labelledby="v-pills-edit-course-tab">
+                        <table class="table table-bordererd">
+                            <tr>
+                                <td>Topic</td>
+                                <td>Course</td>
+                                <td>Edit</td>
+                            </tr>
+                            <?php
+                                    if ($result_edit_topic = $mysqli->query($query_edit_topic)) {
+                                        while ($row_edit_topic = $result_edit_topic->fetch_assoc()) {
+                                            $query_edit_course = "SELECT * FROM course WHERE topic_id = " . $row_edit_topic['topic_id'];
+                                            $query_course_number = "SELECT count(*) FROM course WHERE topic_id = " . $row_edit_topic['topic_id'];
+                                            $course_number = $mysqli->query($query_course_number)->fetch_assoc()['count(*)']; // number of all courses in this topic.
+                                            
+                                            // --------- Topic Name ----------                           
+                                            echo "<tr><td rowspan='" . (int)$course_number . "'><a href=topic.php?topic=" . 
+                                                $row_edit_topic['topic_id'] . ">" . $row_edit_topic['topic_name'] . "</a></td>"; 
+                                            
+                                            if ($result_edit_course = $mysqli->query($query_edit_course)) {
+                                                while ($row_edit_course = $result_edit_course->fetch_assoc()) { 
+                                                    // --------- Courses----------
+                                                    echo "<td>" . $row_edit_course['course_name'] . "</td>";
+                                                    // --------- Edit Button ----------
+                                                    echo"<td><button class='btn btn-primary' id='topic-" . 
+                                                        $row_edit_topic['topic_id'] . "'>". "Edit</button></td></tr>";
+                                                }
+                                            }
+                                        }
+                                    }
+                            ?>
+                        </table>    
+                    </div>
                     <div class="tab-pane fade" id="v-pills-add-lecturer" role="tabpanel" aria-labelledby="v-pills-add-lecturer-tab">
                         <form>
                             <div class="form-group">
@@ -154,7 +207,25 @@
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-edit-lecturer" role="tabpanel" aria-labelledby="v-pills-edit-lecturer-tab">...</div>
+                    <div class="tab-pane fade" id="v-pills-edit-lecturer" role="tabpanel" aria-labelledby="v-pills-edit-lecturer-tab">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>Lecturer</td>
+                                <td>Edit</td>
+                            </tr>
+                            <?php
+                                $query_edit_lecturer = "SELECT * FROM lecturer";
+                                if ($result_edit_lecturer = $mysqli->query($query_edit_lecturer)) {
+                                    while ($row_edit_lecturer = $result_edit_lecturer->fetch_assoc()) {
+                                        // --------- Lectuerer Name ----------
+                                        echo "<tr><td>" . $row_edit_lecturer['lecturer_name'] . "lecturer</td>";
+                                        // --------- Edit Button ----------
+                                        echo"<td><button class='btn btn-primary' id='lecturer-" . $row_edit_lecturer['lecturer_id'] . "'>". "Edit</button></td></tr>";
+                                    }
+                                }
+                            ?>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
