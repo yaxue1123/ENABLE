@@ -58,36 +58,43 @@
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-add-topic" role="tabpanel" aria-labelledby="v-pills-add-topic-tab">        
-                        <form>
+                        <form action="add_topic.php" method="POST">
                             <div class="form-group">
                                 <label for="topic-name">Topic Name</label>
-                                <input type="email" class="form-control" id="topic-name">
+                                <input name="topic-name" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="topic-lecturer">Lecturer</label>
-                                <select class="form-control" id="topic-lecturer">
-                                <option>Heejun Kim</option>
-                                <option>Malvika Pillai</option>
-                                <option>Vincent Carrasco</option>
+                                <select class="form-control" name="topic-lecturer">
+                                <?php
+                                    require "dbconnect.php"; 
+                                    $query_list_lecturer = "SELECT * FROM lecturer";
+                                    if ($result_list_lecturer = $mysqli->query($query_list_lecturer )) {
+                                        while ($row_list_lecturer = $result_list_lecturer->fetch_assoc()) { 
+                                            echo "<option id='lecturer-list-" . $row_list_lecturer["lecturer_id"] ."'>" . 
+                                                $row_list_lecturer['lecturer_name'] . "</option>";
+                                        }
+                                    }
+                                ?>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="topic-description">Description</label>
-                                <textarea class="form-control" id="topic-description" rows="3"></textarea>
+                                <textarea class="form-control" name="topic-description" rows="3"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="topic-requirement">Requirements</label>
-                                <textarea class="form-control" id="topic-requirement" rows="3"></textarea>
+                                <textarea class="form-control" name="topic-requirement" rows="3"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="topic-grade">Grading Criteria</label>
-                                <textarea class="form-control" id="topic-grade" rows="3"></textarea>
+                                <textarea class="form-control" name="topic-grading" rows="3"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="topic-material">Upload Topic Materials</label>
                                 <input type="file" class="form-control-file" id="topic-material">
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button id="btn-add-topic" type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                     <div class="tab-pane fade" id="v-pills-edit-topic" role="tabpanel" aria-labelledby="v-pills-edit-topic-tab">
@@ -98,7 +105,6 @@
                                 <td>Edit</td>
                             </tr>
                             <?php
-                                require "dbconnect.php";
                                 $query_edit_topic = "SELECT * FROM curriculum";
                                 if ($result_edit_topic = $mysqli->query($query_edit_topic)) {
                                     while ($row_edit_topic = $result_edit_topic->fetch_assoc()) {
@@ -107,7 +113,10 @@
                                         // --------- Topic Lecturer ----------
                                         echo "<td>" . $row_edit_topic['lecturer'] . "</td>";
                                         // --------- Edit Button ----------
-                                        echo"<td><button class='btn btn-primary' id='topic-" . $row_edit_topic['topic_id'] . "'>". "Edit</button></td></tr>";
+                                        echo"<td><button class='btn btn-primary' id='topic-" . $row_edit_topic['topic_id'] . "'>". "Edit</button>";
+                                        // --------- Delete Button ----------
+                                        echo"<button class='btn btn-primary' id='topic-delete-" . 
+                                        $row_edit_topic['topic_id'] . "'>". "Delete</button></td></tr>";
                                     }
                                 }
                             ?>
@@ -173,8 +182,11 @@
                                                     // --------- Courses----------
                                                     echo "<td>" . $row_edit_course['course_name'] . "</td>";
                                                     // --------- Edit Button ----------
-                                                    echo"<td><button class='btn btn-primary' id='topic-" . 
-                                                        $row_edit_topic['topic_id'] . "'>". "Edit</button></td></tr>";
+                                                    echo"<td><button class='btn btn-primary' id='course-edit-" . 
+                                                        $row_edit_course['course_id'] . "'>". "Edit</button>";
+                                                    // --------- Delete Button ----------
+                                                    echo"<button class='btn btn-primary' id='course-delete-" . 
+                                                        $row_edit_course['course_id'] . "'>". "Delete</button></td></tr>";
                                                 }
                                             }
                                         }
@@ -204,6 +216,10 @@
                                 <label for="lecturer-portfolio">Portfolio Website</label>
                                 <input class="form-control" id="lecturer-portfolio">
                             </div>
+                            <div class="form-group">
+                                <label for="lecturer-photo">Upload Headpic</label>
+                                <input type="file" class="form-control-file" id="lecturer-photo">
+                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
@@ -218,9 +234,13 @@
                                 if ($result_edit_lecturer = $mysqli->query($query_edit_lecturer)) {
                                     while ($row_edit_lecturer = $result_edit_lecturer->fetch_assoc()) {
                                         // --------- Lectuerer Name ----------
-                                        echo "<tr><td>" . $row_edit_lecturer['lecturer_name'] . "lecturer</td>";
+                                        echo "<tr><td>" . $row_edit_lecturer['lecturer_name'] . "</td>";
                                         // --------- Edit Button ----------
-                                        echo"<td><button class='btn btn-primary' id='lecturer-" . $row_edit_lecturer['lecturer_id'] . "'>". "Edit</button></td></tr>";
+                                        echo"<td><button class='btn btn-primary' id='lecturer-edit-" . 
+                                            $row_edit_lecturer['lecturer_id'] . "'>". "Edit</button>";
+                                        // --------- Delete Button ----------
+                                        echo"<button class='btn btn-primary' id='lecturer-delete-" . 
+                                            $row_edit_lecturer['lecturer_id'] . "'>". "Delete</button></td></tr>";
                                     }
                                 }
                             ?>

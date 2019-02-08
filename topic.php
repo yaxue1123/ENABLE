@@ -69,14 +69,21 @@
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <h1>Syllabus</h1>
             <?php 
-                if ($result = $mysqli->query($query)) {
-                    while ($row = $result->fetch_assoc()) { 
+                if ($result = $mysqli -> query($query)) {
+                    while ($row = $result -> fetch_assoc()) { 
                         // --------- About ----------
                         echo "<h2>About the Course</h2>";
                         echo "<p>" . $row['about']. "</p>";
                         // --------- Lecturer ----------
                         echo "<h2>Lecturer</h2>";
-                        echo "<p>" . $row['lecturer']. ". " . $row['lecturer_description'] ."</p>";
+                        echo "<p>" . $row['lecturer']. ". ";
+                        $query_find_lecturer = "SELECT * FROM lecturer WHERE lecturer_name = '" 
+                            . $row['lecturer'] ."'";
+                        if ($result_lect = $mysqli->query($query_find_lecturer)) {
+                            while ($row_lect = $result_lect -> fetch_assoc()) {
+                                echo $row_lect['about'] ."</p>";
+                            }
+                        }
                         // --------- Description ----------
                         echo "<h2>Description</h2>";
                         echo "<p>" . $row['topic_description'] . "</p>";
