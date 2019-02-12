@@ -1,11 +1,11 @@
 <?php 
     require "dbconnect.php";
     // get user input via POST super variable.
-    $t_name = $_POST['topic-name'];
-    $t_lecturer = $_POST['topic-lecturer'];
-    $t_description = $_POST['topic-description'];
-    $t_requirement = $_POST['topic-requirement'];
-    $t_grading = $_POST['topic-grading'];
+    $t_name = $_POST['name'];
+    $t_lecturer = $_POST['lecturer'];
+    $t_description = $_POST['description'];
+    $t_requirement = $_POST['requirement'];
+    $t_grading = $_POST['grading'];
 
     // ADD new record to the database, TABLE curriculum.
     $add_topic  = "INSERT INTO curriculum (topic_name, lecturer, 
@@ -13,8 +13,5 @@
         "VALUES ('" . $t_name . "','" . $t_lecturer . "','" . $t_description . 
         "','" . $t_requirement . "','" . $t_grading . "')";
 
-    
-    if ($mysqli->query($add_topic)) {
-        echo "yeah";
-    }
+    $mysqli->query($add_topic);
 ?>

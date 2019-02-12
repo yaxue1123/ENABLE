@@ -11,7 +11,41 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <link href="stylesheet/style.css" rel="stylesheet">
+    <script>
+        // when the DOM is ready, execute the JQuery code
+        $(document).ready(function () { 
+            // add topic.
+            $("#btn-add-topic").click(function(){
+                let name = $("#topic-name").val();
+                let lecturer = $("#topic-lecturer").val();
+                let description = $("#topic-description").val();
+                let requirement = $("#topic-requirement").val();
+                let grading = $("#topic-grading").val();
+
+                $.post("add_topic.php", 
+                    {
+                        name: name,
+                        lecturer: lecturer,
+                        description: description,
+                        requirement: requirement,
+                        grading: grading
+                    },
+                    function (data, status) {
+                        // show success alert message.
+                        alert("Topic added successfully!")
+                        // clear all input area.
+                        $("#topic-name").val('');
+                        $("#topic-lecturer").val('');
+                        $("#topic-description").val('');
+                        $("#topic-requirement").val('');
+                        $("#topic-grading").val('');
+                    }
+                );
+            }); 
+        })
+    </script>
 </head>
 <body>
     <header>
@@ -20,7 +54,7 @@
     <nav>
         <ul class="nav justify-content-center">
             <li class="nav-item">
-                <a class="nav-link active" href="home.php">HOME</a>
+                <a class="nav-link active" href="index.php">HOME</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="topics.php" role="button" aria-haspopup="true" aria-expanded="false">TOPICS</a>
@@ -58,14 +92,14 @@
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-add-topic" role="tabpanel" aria-labelledby="v-pills-add-topic-tab">        
-                        <form action="add_topic.php" method="POST">
+                      
                             <div class="form-group">
                                 <label for="topic-name">Topic Name</label>
-                                <input name="topic-name" class="form-control">
+                                <input id="topic-name" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="topic-lecturer">Lecturer</label>
-                                <select class="form-control" name="topic-lecturer">
+                                <select class="form-control" id="topic-lecturer">
                                 <?php
                                     require "dbconnect.php"; 
                                     $query_list_lecturer = "SELECT * FROM lecturer";
@@ -80,22 +114,22 @@
                             </div>
                             <div class="form-group">
                                 <label for="topic-description">Description</label>
-                                <textarea class="form-control" name="topic-description" rows="3"></textarea>
+                                <textarea class="form-control" id="topic-description" rows="3"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="topic-requirement">Requirements</label>
-                                <textarea class="form-control" name="topic-requirement" rows="3"></textarea>
+                                <textarea class="form-control" id="topic-requirement" rows="3"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="topic-grade">Grading Criteria</label>
-                                <textarea class="form-control" name="topic-grading" rows="3"></textarea>
+                                <textarea class="form-control" id="topic-grading" rows="3"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="topic-material">Upload Topic Materials</label>
                                 <input type="file" class="form-control-file" id="topic-material">
                             </div>
-                            <button id="btn-add-topic" type="submit" class="btn btn-primary">Submit</button>
-                        </form>
+                            <button id="btn-add-topic" class="btn btn-primary">Submit</button>
+                      
                     </div>
                     <div class="tab-pane fade" id="v-pills-edit-topic" role="tabpanel" aria-labelledby="v-pills-edit-topic-tab">
                         <table class="table table-bordered">
