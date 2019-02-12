@@ -8,10 +8,10 @@
     $t_grading = $_POST['grading'];
 
     // ADD new record to the database, TABLE curriculum.
-    $add_topic  = "INSERT INTO curriculum (topic_name, lecturer, 
+    $query  = "INSERT INTO curriculum (topic_name, lecturer, 
         topic_description, requirements, grading)" .
         "VALUES ('" . $t_name . "','" . $t_lecturer . "','" . $t_description . 
         "','" . $t_requirement . "','" . $t_grading . "')";
 
-    $mysqli->query($add_topic);
+    $mysqli->query($query);
 ?>

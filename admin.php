@@ -14,16 +14,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <link href="stylesheet/style.css" rel="stylesheet">
     <script>
-        // when the DOM is ready, execute the JQuery code
+        // when the DOM is ready, execute the JQuery code.
         $(document).ready(function () { 
-            // add topic.
+            // add a topic.
             $("#btn-add-topic").click(function(){
                 let name = $("#topic-name").val();
                 let lecturer = $("#topic-lecturer").val();
                 let description = $("#topic-description").val();
                 let requirement = $("#topic-requirement").val();
                 let grading = $("#topic-grading").val();
-
                 $.post("add_topic.php", 
                     {
                         name: name,
@@ -33,7 +32,7 @@
                         grading: grading
                     },
                     function (data, status) {
-                        // show success alert message.
+                        // show success message.
                         alert("Topic added successfully!")
                         // clear all input area.
                         $("#topic-name").val('');
@@ -44,6 +43,31 @@
                     }
                 );
             }); 
+
+            // delete a topic.
+            $(".delete-topic").click(function(){
+                // retrieve topic id from button id.
+                // topic-delete-id.
+                let id = $(this).attr('id').replace("topic-delete-","");
+                $.post('edit_topic.php',
+                    {
+                        op: 'delete',
+                        id: id
+                    },
+                    function (data, status) {
+                        // show success message.
+                        alert("Topic deleted successfully!")
+                        // refresh table.
+                        $.get('view_edit_topic.php',
+                           function(data, status){
+                                $("#v-pills-edit-topic").html(data);
+                            }                            
+                        );
+                    }
+                );
+
+            });
+
         })
     </script>
 </head>
@@ -139,20 +163,7 @@
                                 <td>Edit</td>
                             </tr>
                             <?php
-                                $query_edit_topic = "SELECT * FROM curriculum";
-                                if ($result_edit_topic = $mysqli->query($query_edit_topic)) {
-                                    while ($row_edit_topic = $result_edit_topic->fetch_assoc()) {
-                                        // --------- Topic Name ----------
-                                        echo "<tr><td><a href=topic.php?topic=" . $row_edit_topic['topic_id'] . ">" . $row_edit_topic['topic_name'] . "</a></td>";
-                                        // --------- Topic Lecturer ----------
-                                        echo "<td>" . $row_edit_topic['lecturer'] . "</td>";
-                                        // --------- Edit Button ----------
-                                        echo"<td><button class='btn btn-primary' id='topic-" . $row_edit_topic['topic_id'] . "'>". "Edit</button>";
-                                        // --------- Delete Button ----------
-                                        echo"<button class='btn btn-primary' id='topic-delete-" . 
-                                        $row_edit_topic['topic_id'] . "'>". "Delete</button></td></tr>";
-                                    }
-                                }
+                                require "view_edit_topic.php";
                             ?>
                         </table>
                     </div>
