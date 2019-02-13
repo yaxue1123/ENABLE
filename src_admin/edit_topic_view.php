@@ -1,5 +1,5 @@
 <?php   
-    require "dbconnect.php"; 
+    require "../dbconnect.php"; 
     $id = $_POST['id'];
     $name = '';
     $lecturer = '';
@@ -19,7 +19,7 @@
     }
 ?>
 
-<form action="edit_topic_update.php" method="POST">  
+<form action="src_admin/edit_topic_update.php" method="POST">  
     <div class="form-group">
         <label for="topic-name">Topic Name</label>
         <input name="topic-name" class="form-control" value="<?php echo $name; ?>">

@@ -1,5 +1,5 @@
 <?php 
-    require "dbconnect.php";
+    require "../dbconnect.php";
     // get user input via POST super variable.
     $t_name = $_POST['topic-name'];
     $t_lecturer = $_POST['topic-lecturer'];
@@ -25,6 +25,6 @@
 
     if ($mysqli->query($update_topic)) {
         echo "Topic updated successfully.";
-        echo "<a href='admin.php'>Back to admin portal.</a>";
+        echo "<a href='../admin.php'>Back to admin portal.</a>";
     }
 ?>

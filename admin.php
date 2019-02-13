@@ -21,7 +21,7 @@
                 // retrieve topic id from button id.
                 // topic-delete-id.
                 let id = $(this).attr('id').replace("topic-delete-","");
-                $.post('delete_topic.php',
+                $.post('src_admin/delete_topic.php',
                     {
                         id: id
                     },
@@ -36,7 +36,7 @@
             // edit a topic.
             $(".edit-topic").click(function(){ 
                 let id = $(this).attr('id').replace("topic-edit-","");
-                $.post('edit_topic_view.php',
+                $.post('src_admin/edit_topic_view.php',
                     {
                         id: id
                     },
@@ -95,7 +95,7 @@
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-add-topic" role="tabpanel" aria-labelledby="v-pills-add-topic-tab">        
-                        <form action="add_topic.php" method="POST">
+                        <form action="src_admin/add_topic.php" method="POST">
                             <div class="form-group">
                                 <label for="topic-name">Topic Name</label>
                                 <input name="topic-name" class="form-control">
