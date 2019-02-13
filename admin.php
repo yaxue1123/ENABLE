@@ -244,26 +244,26 @@
                         </table>    
                     </div>
                     <div class="tab-pane fade" id="v-pills-add-lecturer" role="tabpanel" aria-labelledby="v-pills-add-lecturer-tab">
-                        <form>
+                        <form action="src_admin/add_lecturer.php" method="POST">
                             <div class="form-group">
                                 <label for="lecturer-name">Lecturer Name</label>
-                                <input class="form-control" id="lecturer-name">
+                                <input class="form-control" name="lecturer-name">
                             </div>
                             <div class="form-group">
                                 <label for="lecturer-pronouns">Pronouns</label>
-                                <select class="form-control" id="lecturer-pronouns">
+                                <select class="form-control" name="lecturer-pronouns">
                                 <option>He/Him/His</option>
                                 <option>She/Her/Hers</option>
                                 <option>Ze/Zir/Zirs</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="lecturer-description">Short Bio</label>
-                                <textarea class="form-control" id="lecturer-description" rows="3"></textarea>
+                                <label for="lecturer-about">Short Bio</label>
+                                <textarea class="form-control" name="lecturer-about" rows="3"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="lecturer-portfolio">Portfolio Website</label>
-                                <input class="form-control" id="lecturer-portfolio">
+                                <label for="lecturer-url">Portfolio Website</label>
+                                <input class="form-control" name="lecturer-url">
                             </div>
                             <div class="form-group">
                                 <label for="lecturer-photo">Upload Headpic</label>
