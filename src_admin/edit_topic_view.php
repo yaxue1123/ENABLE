@@ -19,7 +19,8 @@
     }
 ?>
 
-<form action="src_admin/edit_topic_update.php" method="POST">  
+<form action="src_admin/edit_topic_update.php" method="POST"> 
+    <input name="topic-id" class="form-control" value="<?php echo $id; ?>" style="display: none"> 
     <div class="form-group">
         <label for="topic-name">Topic Name</label>
         <input name="topic-name" class="form-control" value="<?php echo $name; ?>">
@@ -60,5 +61,5 @@
         <label for="topic-material">Upload Topic Materials</label>
         <input type="file" class="form-control-file" id="topic-material">
     </div>
-    <button id="btn-add-topic" type="submit" class="btn btn-primary">Update</button>
+    <button id="topic-update-<?php echo $id; ?>" type="submit" class="btn btn-primary update-topic">Update</button>
 </form>

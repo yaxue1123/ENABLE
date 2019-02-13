@@ -1,6 +1,7 @@
 <?php 
     require "../dbconnect.php";
     // get user input via POST super variable.
+    $id = $_POST["topic-id"];
     $t_name = $_POST['topic-name'];
     $t_lecturer = $_POST['topic-lecturer'];
     $t_description = $_POST['topic-description'];
@@ -14,14 +15,7 @@
         "', " . "topic_description = '" . $t_description .
         "', " . "requirements = '" . $t_requirement .
         "', " . "grading = '" . $t_grading .
-        "' WHERE topic_id = 1";
-    
-        echo $update_topic;
-
-        // " (topic_name, lecturer, 
-        // topic_description, requirements, grading)" .
-        // "VALUES ('" . $t_name . "','" . $t_lecturer . "','" . $t_description . 
-        // "','" . $t_requirement . "','" . $t_grading . "')";
+        "' WHERE topic_id = " . $id;
 
     if ($mysqli->query($update_topic)) {
         echo "Topic updated successfully.";

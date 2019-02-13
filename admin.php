@@ -47,6 +47,18 @@
                 );
             });
 
+            // // update a topic. 
+            // $(".update-topic").click(function(){ 
+            //     let id = $(this).attr('id').replace("topic-update-","");
+            //     console.log("hahaha");
+            //     console.log(id);
+            //     $.post('src_admin/edit_topic_update.php',
+            //         {
+            //             id: id
+            //         }
+            //     );
+            // });
+
         });
     </script>
 </head>
