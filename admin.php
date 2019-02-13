@@ -44,6 +44,18 @@
                 );
             }); 
 
+            // Everytime click 'edit topic', partially update. 
+            // From edit success message back to edit, partiallt update.
+            $("#v-pills-edit-topic-tab").click(function(){
+                // refresh table.
+                console.log("yayay");
+                $.get('view_edit_topic.php',
+                    function(data, status){
+                        $("#v-pills-edit-topic").html(data);
+                    }                            
+                );
+            });
+
             // delete a topic.
             $(".delete-topic").click(function(){
                 // retrieve topic id from button id.
@@ -56,13 +68,8 @@
                     },
                     function (data, status) {
                         // show success message.
-                        alert("Topic deleted successfully!")
-                        // refresh table.
-                        $.get('view_edit_topic.php',
-                           function(data, status){
-                                $("#v-pills-edit-topic").html(data);
-                            }                            
-                        );
+                        $("#v-pills-edit-topic")
+                            .html("<h2>Topic deleted successfully.</h2>");
                     }
                 );
 
@@ -106,11 +113,11 @@
             <div class="col-3">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="nav-link active" id="v-pills-add-topic-tab" data-toggle="pill" href="#v-pills-add-topic" role="tab" aria-controls="v-pills-add-topic" aria-selected="true">Add Topic</a>
-                    <a class="nav-link" id="v-pills-edit-topic-tab" data-toggle="pill" href="#v-pills-edit-topic" role="tab" aria-controls="v-pills-edit-topic" aria-selected="false">Edit Topic</a>
+                    <a class="nav-link" id="v-pills-edit-topic-tab" href="#v-pills-edit-topic" role="tab" aria-controls="v-pills-edit-topic">Edit Topic</a>
                     <a class="nav-link" id="v-pills-add-course-tab" data-toggle="pill" href="#v-pills-add-course" role="tab" aria-controls="v-pills-add-course" aria-selected="false">Add Course</a>
                     <a class="nav-link" id="v-pills-edit-course-tab" data-toggle="pill" href="#v-pills-edit-course" role="tab" aria-controls="v-pills-edit-course" aria-selected="false">Edit Course</a>
                     <a class="nav-link" id="v-pills-add-lecturer-tab" data-toggle="pill" href="#v-pills-add-lecturer" role="tab" aria-controls="v-pills-add-lecturer" aria-selected="false">Add Lecturer</a>
-                    <a class="nav-link" id="v-pills-edit-lecturer-tab" data-toggle="pill" href="#v-pills-edit-lecturer" role="tab" aria-controls="v-pills-edit-lecturer" aria-selected="false">Edit Lecturer</a>
+                    <a class="nav-link" id="v-pills-edit-lecturer-tab"  href="#v-pills-edit-lecturer" role="tab" aria-controls="v-pills-edit-lecturer" aria-selected="false">Edit Lecturer</a>
                 </div>
             </div>
             <div class="col-9">
