@@ -71,9 +71,9 @@
             <?php 
                 if ($result = $mysqli -> query($query)) {
                     while ($row = $result -> fetch_assoc()) { 
-                        // --------- About ----------
-                        echo "<h2>About the Course</h2>";
-                        echo "<p>" . $row['about']. "</p>";
+                        // --------- Description ----------
+                        echo "<h2>Description</h2>";
+                        echo "<p>" . $row['topic_description'] . "</p>";
                         // --------- Lecturer ----------
                         echo "<h2>Lecturer</h2>";
                         echo "<p>" . $row['lecturer']. ". ";
@@ -84,9 +84,6 @@
                                 echo $row_lect['about'] ."</p>";
                             }
                         }
-                        // --------- Description ----------
-                        echo "<h2>Description</h2>";
-                        echo "<p>" . $row['topic_description'] . "</p>";
                         // --------- Requirements ----------
                         echo "<h2>Requirements</h2>";
                         echo "<p>". $row['requirements'] ."</p>";
