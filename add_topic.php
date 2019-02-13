@@ -14,6 +14,7 @@
         "','" . $t_requirement . "','" . $t_grading . "')";
 
     if ($mysqli->query($add_topic)) {
-        require "success_message.php";
+        echo "Topic added successfully.";
+        echo "<a href='admin.php'>Back to admin portal.</a>";
     }
 ?>

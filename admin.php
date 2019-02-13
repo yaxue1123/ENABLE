@@ -11,7 +11,47 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <link href="stylesheet/style.css" rel="stylesheet">
+    <script>
+        // when the DOM is ready, execute the JQuery code.
+        $(document).ready(function() { 
+            // delete a topic.
+            $(".delete-topic").click(function(){
+                // retrieve topic id from button id.
+                // topic-delete-id.
+                let id = $(this).attr('id').replace("topic-delete-","");
+                $.post('edit_topic.php',
+                    {
+                        op: 'delete',
+                        id: id
+                    },
+                    function (data, status) {
+                        // show success message.
+                        $("body")
+                            .html("Topic deleted successfully.<a href='admin.php'>Back to admin portal.</a>");
+                    }
+                );
+            });
+
+            // edit a topic.
+            $(".edit-topic").click(function(){ 
+                let id = $(this).attr('id').replace("topic-delete-","");
+                $.post('edit_topic.php',
+                    {
+                        op: 'delete',
+                        id: id
+                    },
+                    function (data, status) {
+                        // show success message.
+                        $("body")
+                            .html("Topic deleted successfully.<a href='admin.php'>Back to admin portal.</a>");
+                    }
+                );
+            });
+
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -113,9 +153,9 @@
                                         // --------- Topic Lecturer ----------
                                         echo "<td>" . $row_edit_topic['lecturer'] . "</td>";
                                         // --------- Edit Button ----------
-                                        echo"<td><button class='btn btn-primary' id='topic-" . $row_edit_topic['topic_id'] . "'>". "Edit</button>";
+                                        echo"<td><button class='btn btn-primary edit-topic' id='topic-" . $row_edit_topic['topic_id'] . "'>". "Edit</button>";
                                         // --------- Delete Button ----------
-                                        echo"<button class='btn btn-primary' id='topic-delete-" . 
+                                        echo"<button class='btn btn-primary delete-topic' id='topic-delete-" . 
                                         $row_edit_topic['topic_id'] . "'>". "Delete</button></td></tr>";
                                     }
                                 }
