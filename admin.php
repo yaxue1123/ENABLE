@@ -21,9 +21,8 @@
                 // retrieve topic id from button id.
                 // topic-delete-id.
                 let id = $(this).attr('id').replace("topic-delete-","");
-                $.post('edit_topic.php',
+                $.post('delete_topic.php',
                     {
-                        op: 'delete',
                         id: id
                     },
                     function (data, status) {
@@ -36,16 +35,14 @@
 
             // edit a topic.
             $(".edit-topic").click(function(){ 
-                let id = $(this).attr('id').replace("topic-delete-","");
-                $.post('edit_topic.php',
+                let id = $(this).attr('id').replace("topic-edit-","");
+                $.post('edit_topic_view.php',
                     {
-                        op: 'delete',
                         id: id
                     },
                     function (data, status) {
                         // show success message.
-                        $("body")
-                            .html("Topic deleted successfully.<a href='admin.php'>Back to admin portal.</a>");
+                        $("#v-pills-edit-topic").html(data);
                     }
                 );
             });
@@ -60,7 +57,7 @@
     <nav>
         <ul class="nav justify-content-center">
             <li class="nav-item">
-                <a class="nav-link active" href="home.php">HOME</a>
+                <a class="nav-link active" href="index.php">HOME</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="topics.php" role="button" aria-haspopup="true" aria-expanded="false">TOPICS</a>
@@ -153,7 +150,7 @@
                                         // --------- Topic Lecturer ----------
                                         echo "<td>" . $row_edit_topic['lecturer'] . "</td>";
                                         // --------- Edit Button ----------
-                                        echo"<td><button class='btn btn-primary edit-topic' id='topic-" . $row_edit_topic['topic_id'] . "'>". "Edit</button>";
+                                        echo"<td><button class='btn btn-primary edit-topic' id='topic-edit-" . $row_edit_topic['topic_id'] . "'>". "Edit</button>";
                                         // --------- Delete Button ----------
                                         echo"<button class='btn btn-primary delete-topic' id='topic-delete-" . 
                                         $row_edit_topic['topic_id'] . "'>". "Delete</button></td></tr>";
