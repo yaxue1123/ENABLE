@@ -11,72 +11,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <link href="stylesheet/style.css" rel="stylesheet">
-    <script>
-        // when the DOM is ready, execute the JQuery code.
-        $(document).ready(function () { 
-            // add a topic.
-            $("#btn-add-topic").click(function(){
-                let name = $("#topic-name").val();
-                let lecturer = $("#topic-lecturer").val();
-                let description = $("#topic-description").val();
-                let requirement = $("#topic-requirement").val();
-                let grading = $("#topic-grading").val();
-                $.post("add_topic.php", 
-                    {
-                        name: name,
-                        lecturer: lecturer,
-                        description: description,
-                        requirement: requirement,
-                        grading: grading
-                    },
-                    function (data, status) {
-                        // show success message.
-                        alert("Topic added successfully!")
-                        // clear all input area.
-                        $("#topic-name").val('');
-                        $("#topic-lecturer").val('');
-                        $("#topic-description").val('');
-                        $("#topic-requirement").val('');
-                        $("#topic-grading").val('');
-                    }
-                );
-            }); 
-
-            // Everytime click 'edit topic', partially update. 
-            // From edit success message back to edit, partiallt update.
-            $("#v-pills-edit-topic-tab").click(function(){
-                // refresh table.
-                console.log("yayay");
-                $.get('view_edit_topic.php',
-                    function(data, status){
-                        $("#v-pills-edit-topic").html(data);
-                    }                            
-                );
-            });
-
-            // delete a topic.
-            $(".delete-topic").click(function(){
-                // retrieve topic id from button id.
-                // topic-delete-id.
-                let id = $(this).attr('id').replace("topic-delete-","");
-                $.post('edit_topic.php',
-                    {
-                        op: 'delete',
-                        id: id
-                    },
-                    function (data, status) {
-                        // show success message.
-                        $("#v-pills-edit-topic")
-                            .html("<h2>Topic deleted successfully.</h2>");
-                    }
-                );
-
-            });
-
-        })
-    </script>
 </head>
 <body>
     <header>
@@ -85,7 +20,7 @@
     <nav>
         <ul class="nav justify-content-center">
             <li class="nav-item">
-                <a class="nav-link active" href="index.php">HOME</a>
+                <a class="nav-link active" href="home.php">HOME</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="topics.php" role="button" aria-haspopup="true" aria-expanded="false">TOPICS</a>
@@ -113,24 +48,24 @@
             <div class="col-3">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="nav-link active" id="v-pills-add-topic-tab" data-toggle="pill" href="#v-pills-add-topic" role="tab" aria-controls="v-pills-add-topic" aria-selected="true">Add Topic</a>
-                    <a class="nav-link" id="v-pills-edit-topic-tab" href="#v-pills-edit-topic" role="tab" aria-controls="v-pills-edit-topic">Edit Topic</a>
+                    <a class="nav-link" id="v-pills-edit-topic-tab" data-toggle="pill" href="#v-pills-edit-topic" role="tab" aria-controls="v-pills-edit-topic" aria-selected="false">Edit Topic</a>
                     <a class="nav-link" id="v-pills-add-course-tab" data-toggle="pill" href="#v-pills-add-course" role="tab" aria-controls="v-pills-add-course" aria-selected="false">Add Course</a>
                     <a class="nav-link" id="v-pills-edit-course-tab" data-toggle="pill" href="#v-pills-edit-course" role="tab" aria-controls="v-pills-edit-course" aria-selected="false">Edit Course</a>
                     <a class="nav-link" id="v-pills-add-lecturer-tab" data-toggle="pill" href="#v-pills-add-lecturer" role="tab" aria-controls="v-pills-add-lecturer" aria-selected="false">Add Lecturer</a>
-                    <a class="nav-link" id="v-pills-edit-lecturer-tab"  href="#v-pills-edit-lecturer" role="tab" aria-controls="v-pills-edit-lecturer" aria-selected="false">Edit Lecturer</a>
+                    <a class="nav-link" id="v-pills-edit-lecturer-tab" data-toggle="pill" href="#v-pills-edit-lecturer" role="tab" aria-controls="v-pills-edit-lecturer" aria-selected="false">Edit Lecturer</a>
                 </div>
             </div>
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-add-topic" role="tabpanel" aria-labelledby="v-pills-add-topic-tab">        
-                      
+                        <form action="add_topic.php" method="POST">
                             <div class="form-group">
                                 <label for="topic-name">Topic Name</label>
-                                <input id="topic-name" class="form-control">
+                                <input name="topic-name" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="topic-lecturer">Lecturer</label>
-                                <select class="form-control" id="topic-lecturer">
+                                <select class="form-control" name="topic-lecturer">
                                 <?php
                                     require "dbconnect.php"; 
                                     $query_list_lecturer = "SELECT * FROM lecturer";
@@ -145,22 +80,22 @@
                             </div>
                             <div class="form-group">
                                 <label for="topic-description">Description</label>
-                                <textarea class="form-control" id="topic-description" rows="3"></textarea>
+                                <textarea class="form-control" name="topic-description" rows="3"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="topic-requirement">Requirements</label>
-                                <textarea class="form-control" id="topic-requirement" rows="3"></textarea>
+                                <textarea class="form-control" name="topic-requirement" rows="3"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="topic-grade">Grading Criteria</label>
-                                <textarea class="form-control" id="topic-grading" rows="3"></textarea>
+                                <textarea class="form-control" name="topic-grading" rows="3"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="topic-material">Upload Topic Materials</label>
                                 <input type="file" class="form-control-file" id="topic-material">
                             </div>
-                            <button id="btn-add-topic" class="btn btn-primary">Submit</button>
-                      
+                            <button id="btn-add-topic" type="submit" class="btn btn-primary">Submit</button>
+                        </form>
                     </div>
                     <div class="tab-pane fade" id="v-pills-edit-topic" role="tabpanel" aria-labelledby="v-pills-edit-topic-tab">
                         <table class="table table-bordered">
@@ -170,7 +105,20 @@
                                 <td>Edit</td>
                             </tr>
                             <?php
-                                require "view_edit_topic.php";
+                                $query_edit_topic = "SELECT * FROM curriculum";
+                                if ($result_edit_topic = $mysqli->query($query_edit_topic)) {
+                                    while ($row_edit_topic = $result_edit_topic->fetch_assoc()) {
+                                        // --------- Topic Name ----------
+                                        echo "<tr><td><a href=topic.php?topic=" . $row_edit_topic['topic_id'] . ">" . $row_edit_topic['topic_name'] . "</a></td>";
+                                        // --------- Topic Lecturer ----------
+                                        echo "<td>" . $row_edit_topic['lecturer'] . "</td>";
+                                        // --------- Edit Button ----------
+                                        echo"<td><button class='btn btn-primary' id='topic-" . $row_edit_topic['topic_id'] . "'>". "Edit</button>";
+                                        // --------- Delete Button ----------
+                                        echo"<button class='btn btn-primary' id='topic-delete-" . 
+                                        $row_edit_topic['topic_id'] . "'>". "Delete</button></td></tr>";
+                                    }
+                                }
                             ?>
                         </table>
                     </div>
