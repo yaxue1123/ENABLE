@@ -19,6 +19,7 @@
 ?>
 
 <form action="src_admin/edit_lecturer_update.php" method="POST">
+    <input name="lecturer-id" class="form-control" value="<?php echo $id; ?>" style="display: none"> 
     <div class="form-group">
         <label for="lecturer-name">Lecturer Name</label>
         <input class="form-control" name="lecturer-name" value="<?php echo $name; ?>">
