@@ -33,6 +33,23 @@
                 );
             });
 
+            // delete a lecturer.
+            $(".delete-lecturer").click(function(){
+                // retrieve lecturer id from button id.
+                // lectuer-delete-id.
+                let id = $(this).attr('id').replace("lecturer-delete-","");
+                $.post('src_admin/delete_lecturer.php',
+                    {
+                        id: id
+                    },
+                    function (data, status) {
+                        // show success message.
+                        $("body")
+                            .html("Lecturer deleted successfully.<a href='admin.php'>Back to admin portal.</a>");
+                    }
+                );
+            });
+
             // edit a topic.
             $(".edit-topic").click(function(){ 
                 let id = $(this).attr('id').replace("topic-edit-","");
@@ -288,7 +305,7 @@
                                         echo"<td><button class='btn btn-primary' id='lecturer-edit-" . 
                                             $row_edit_lecturer['lecturer_id'] . "'>". "Edit</button>";
                                         // --------- Delete Button ----------
-                                        echo"<button class='btn btn-primary' id='lecturer-delete-" . 
+                                        echo"<button class='btn btn-primary delete-lecturer' id='lecturer-delete-" . 
                                             $row_edit_lecturer['lecturer_id'] . "'>". "Delete</button></td></tr>";
                                     }
                                 }
