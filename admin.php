@@ -58,23 +58,27 @@
                         id: id
                     },
                     function (data, status) {
-                        // show success message.
+                        // show selected topic's info.
                         $("#v-pills-edit-topic").html(data);
                     }
                 );
             });
 
-            // // update a topic. 
-            // $(".update-topic").click(function(){ 
-            //     let id = $(this).attr('id').replace("topic-update-","");
-            //     console.log("hahaha");
-            //     console.log(id);
-            //     $.post('src_admin/edit_topic_update.php',
-            //         {
-            //             id: id
-            //         }
-            //     );
-            // });
+            // edit a lecturer.
+            $(".edit-lecturer").click(function(){ 
+                console.log("hahaha");
+                let id = $(this).attr('id').replace("lecturer-edit-","");
+                console.log(id);
+                $.post('src_admin/edit_lecturer_view.php',
+                    {
+                        id: id
+                    },
+                    function (data, status) {
+                        // show selected lecturer's info.
+                        $("#v-pills-edit-lecturer").html(data);
+                    }
+                );
+            });
 
         });
     </script>
@@ -302,7 +306,7 @@
                                         // --------- Lectuerer Name ----------
                                         echo "<tr><td>" . $row_edit_lecturer['lecturer_name'] . "</td>";
                                         // --------- Edit Button ----------
-                                        echo"<td><button class='btn btn-primary' id='lecturer-edit-" . 
+                                        echo"<td><button class='btn btn-primary edit-lecturer' id='lecturer-edit-" . 
                                             $row_edit_lecturer['lecturer_id'] . "'>". "Edit</button>";
                                         // --------- Delete Button ----------
                                         echo"<button class='btn btn-primary delete-lecturer' id='lecturer-delete-" . 
