@@ -95,11 +95,10 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="topics.php" role="button" aria-haspopup="true" aria-expanded="false">TOPICS</a>
                 <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">TEXT MINING</a>
-                <a class="dropdown-item" href="#">GENOMICS</a>
-                <a class="dropdown-item" href="#">MEDICAL IMAGING</a>
+                    <a class="dropdown-item" href="topics.php?year=2018">YEAR 2018</a>
+                    <a class="dropdown-item" href="topics.php?year=2019">YEAR 2019</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="topics.php">ALL TOPICS</a>
+                <a class="dropdown-item" href="topics.php?year=all">ALL TOPICS</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -134,10 +133,14 @@
                                 <input name="topic-name" class="form-control">
                             </div>
                             <div class="form-group">
+                                <label for="topic-year">Year</label>
+                                <input name="topic-year" class="form-control">
+                            </div>
+                            <div class="form-group">
                                 <label for="topic-lecturer">Lecturer</label>
                                 <select class="form-control" name="topic-lecturer">
                                 <?php
-                                    require "dbconnect.php"; 
+                                    require "dbconnect.php";
                                     $query_list_lecturer = "SELECT * FROM lecturer";
                                     if ($result_list_lecturer = $mysqli->query($query_list_lecturer )) {
                                         while ($row_list_lecturer = $result_list_lecturer->fetch_assoc()) { 
@@ -171,6 +174,7 @@
                         <table class="table table-bordered">
                             <tr>
                                 <td>Topic</td>
+                                <td>Year</td>
                                 <td>Lecturer</td>
                                 <td>Edit</td>
                             </tr>
@@ -180,6 +184,8 @@
                                     while ($row_edit_topic = $result_edit_topic->fetch_assoc()) {
                                         // --------- Topic Name ----------
                                         echo "<tr><td><a href=topic.php?topic=" . $row_edit_topic['topic_id'] . ">" . $row_edit_topic['topic_name'] . "</a></td>";
+                                        // --------- Topic Year ----------
+                                        echo "<td><a>" . $row_edit_topic['year'] . "</a></td>";
                                         // --------- Topic Lecturer ----------
                                         echo "<td>" . $row_edit_topic['lecturer'] . "</td>";
                                         // --------- Edit Button ----------

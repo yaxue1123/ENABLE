@@ -2,6 +2,7 @@
     require "../dbconnect.php"; 
     $id = $_POST['id'];
     $name = '';
+    $year = '';
     $lecturer = '';
     $description = '';
     $requirement = '';
@@ -10,7 +11,8 @@
     $query = "SELECT * FROM `curriculum` WHERE topic_id = " . $id;
     if ($result = $mysqli->query($query)) {
         while ($row = $result ->fetch_assoc()) { 
-            $name = $row["topic_name"];
+            $name = $row['topic_name'];
+            $year = $row['year'];
             $lecturer = $row['lecturer'];
             $description = $row['topic_description'];
             $requirement = $row['requirements'];
@@ -24,6 +26,10 @@
     <div class="form-group">
         <label for="topic-name">Topic Name</label>
         <input name="topic-name" class="form-control" value="<?php echo $name; ?>">
+    </div>
+    <div class="form-group">
+        <label for="topic-year">Year</label>
+        <input name="topic-year" class="form-control" value="<?php echo $year; ?>">
     </div>
     <div class="form-group">
         <label for="topic-lecturer">Lecturer</label>

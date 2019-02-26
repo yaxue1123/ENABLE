@@ -25,11 +25,10 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="topics.php" role="button" aria-haspopup="true" aria-expanded="false">TOPICS</a>
                 <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">TEXT MINING</a>
-                <a class="dropdown-item" href="#">GENOMICS</a>
-                <a class="dropdown-item" href="#">MEDICAL IMAGING</a>
+                    <a class="dropdown-item" href="topics.php?year=2018">YEAR 2018</a>
+                    <a class="dropdown-item" href="topics.php?year=2019">YEAR 2019</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="topics.php">ALL TOPICS</a>
+                <a class="dropdown-item" href="topics.php?year=all">ALL TOPICS</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -53,7 +52,14 @@
             </tr>
             <?php
                 require "dbconnect.php";
-                $query1 = "SELECT * FROM curriculum";
+                $year = $_GET['year'];
+
+                if ($year == 'all') {
+                    $query1 = "SELECT * FROM curriculum";
+                } else {
+                    $query1 = "SELECT * FROM curriculum WHERE year = " . $year;
+                }
+
                 if ($result1 = $mysqli->query($query1)) {
                     while ($row1 = $result1->fetch_assoc()) {
                         echo "<tr><td><a href=topic.php?topic=" . $row1['topic_id'] . ">" . $row1['topic_name'] . "</a></td>";
