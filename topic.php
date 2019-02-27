@@ -88,9 +88,6 @@
                             // --------- Requirements ----------
                             echo "<h2>Requirements</h2>";
                             echo "<p>". $row['requirements'] ."</p>";
-                            // --------- Grading ----------
-                            echo "<h2>Grading</h2>";
-                            echo "<p>". $row['grading'] ."</p>";
                         }
                     }
                 ?>

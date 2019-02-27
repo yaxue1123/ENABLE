@@ -16,7 +16,6 @@
             $lecturer = $row['lecturer'];
             $description = $row['topic_description'];
             $requirement = $row['requirements'];
-            $grading = $row['grading'];
         }
     }
 ?>
@@ -55,12 +54,6 @@
         <label for="topic-requirement">Requirements</label>
         <textarea class="form-control" name="topic-requirement" rows="3">
             <?php echo $requirement; ?>
-        </textarea>
-    </div>
-    <div class="form-group">
-        <label for="topic-grade">Grading Criteria</label>
-        <textarea class="form-control" name="topic-grading" rows="3">
-            <?php echo $grading; ?>
         </textarea>
     </div>
     <div class="form-group">

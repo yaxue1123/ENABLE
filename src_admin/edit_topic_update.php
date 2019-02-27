@@ -7,7 +7,6 @@
     $t_lecturer = $_POST['topic-lecturer'];
     $t_description = $_POST['topic-description'];
     $t_requirement = $_POST['topic-requirement'];
-    $t_grading = $_POST['topic-grading'];
 
     // Update record to the database, TABLE curriculum.
     $update_topic  = "UPDATE curriculum " .
@@ -16,7 +15,6 @@
         "', " . "lecturer = '" . $t_lecturer .
         "', " . "topic_description = '" . $t_description .
         "', " . "requirements = '" . $t_requirement .
-        "', " . "grading = '" . $t_grading .
         "' WHERE topic_id = " . $id;
 
     if ($mysqli->query($update_topic)) {

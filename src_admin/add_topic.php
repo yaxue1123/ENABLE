@@ -6,13 +6,12 @@
     $t_lecturer = $_POST['topic-lecturer'];
     $t_description = $_POST['topic-description'];
     $t_requirement = $_POST['topic-requirement'];
-    $t_grading = $_POST['topic-grading'];
 
     // ADD new record to the database, TABLE curriculum.
     $add_topic  = "INSERT INTO curriculum (topic_name, year, lecturer, 
         topic_description, requirements, grading)" .
         "VALUES ('" . $t_name . "','" . $t_year . "','" . $t_lecturer . "','" . $t_description . 
-        "','" . $t_requirement . "','" . $t_grading . "')";
+        "','" . $t_requirement . "')";
 
     if ($mysqli->query($add_topic)) {
         echo "Topic added successfully.";

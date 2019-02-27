@@ -162,10 +162,6 @@
                                 <textarea class="form-control" name="topic-requirement" rows="3"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="topic-grade">Grading Criteria</label>
-                                <textarea class="form-control" name="topic-grading" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
                                 <label for="topic-material">Upload Topic Materials</label>
                                 <input type="file" class="form-control-file" id="topic-material">
                             </div>
