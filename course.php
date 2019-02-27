@@ -25,20 +25,22 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="topics.php" role="button" aria-haspopup="true" aria-expanded="false">TOPICS</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="topics.php?year=2018">YEAR 2018</a>
                     <a class="dropdown-item" href="topics.php?year=2019">YEAR 2019</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="topics.php?year=all">ALL TOPICS</a>
+                    <a class="dropdown-item" href="topics.php?year=2018">YEAR 2018</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="topics.php" role="button" aria-haspopup="true" aria-expanded="false">ENABLE PROJECT</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="https://enable.unc.edu/boot-camp-day-by-day-schedule/">YEAR 2019</a>
+                    <a class="dropdown-item" href="https://enable.unc.edu/2018-hidav-participants/">YEAR 2018</a>
                 </div>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="https://learnonline.chip.unc.edu:8000/hub/login">JUPYTERHUB</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="lecturer.php">LECTURERS</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://enable.unc.edu/">ENABLE PROJECT</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="login.php">LOGIN</a>
             </li>
         </ul>
     </nav>
@@ -109,6 +111,7 @@
             </p>
             <p>Email: enable@unc.edu</p>
             <p>Phone: 919.962.2208</p>
+            <a class="btn btn-second" href="login.php">Admin Login</a>
         </div>
     </footer>
     <script>

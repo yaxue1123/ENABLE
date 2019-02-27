@@ -111,7 +111,17 @@ footer {
 }
 
 .footer-col1, .footer-col2 {
-    margin: 3em;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+.footer-col1 {
+    margin-right: 3em;
+}
+
+
+.footer-col2:link {
+   color: #FFF;
 }
 
 .footer-icon {
@@ -177,9 +187,16 @@ footer {
     background-color: #4B9CD3;
     border-color: #4B9CD3;
   }
+
+  .btn-second {
+    cursor: pointer;
+    background-color: rgb(124, 122, 122);
+    border-color: rgb(124, 122, 122);
+  }
+
   .btn-primary:hover{
     background-color:rgb(123, 184, 228);
-    border-color: rgb(123, 184, 228);
+    border-color: rgb(151, 172, 187);
   }
 
   .lecturer-2-col {
