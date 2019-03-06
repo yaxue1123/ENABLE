@@ -45,36 +45,65 @@
         </ul>
     </nav>
     <section>
-        <h1>Curriculum at a glance</h1>
+        <?php 
+            require "dbconnect.php";
+            $year = $_GET['year'];
+            echo '<h1>Curriculum at a glance - ' . $year . '</h1>';
+        ?>
         <table class="table table-striped">
             <tr>
                 <td>Topic</td>
                 <td>Course</td>
-                <td>Lecturer</td>
+                <td>Datasets</td>
+                <td>Tools</td>
             </tr>
             <?php
-                require "dbconnect.php";
-                $year = $_GET['year'];
-
-                if ($year == 'all') {
-                    $query1 = "SELECT * FROM curriculum";
-                } else {
-                    $query1 = "SELECT * FROM curriculum WHERE year = " . $year;
-                }
+                $query1 = "SELECT * FROM curriculum WHERE year = " . $year;
 
                 if ($result1 = $mysqli->query($query1)) {
                     while ($row1 = $result1->fetch_assoc()) {
-                        echo "<tr><td><a href=topic.php?topic=" . $row1['topic_id'] . ">" . $row1['topic_name'] . "</a></td>";
-                        echo "<td>";
                         $query2 = "SELECT * FROM course WHERE topic_id = " . $row1['topic_id'];
-                        if ($result2 = $mysqli->query($query2)) {
-                            while ($row2 = $result2->fetch_assoc()) { 
-                                echo $row2['course_name'] . "<br>";
+
+                        // for year 2018, only represent download link of slides.
+                        // no detailed info for year 2018.
+                        if($row1['year'] == '2018') {
+                            echo "<tr><td>" . $row1['topic_name'] . "</td>";
+                            echo "<td>";
+                            if ($result2 = $mysqli->query($query2)) {
+                                while ($row2 = $result2->fetch_assoc()) { 
+                                    // course material.
+                                    echo "<a href='materials/topic-" . $row1['topic_id'] . "/slides/" . 
+                                    $row1['topic_id'] . "." . $row2['course_id'] .".pdf'>" . $row2['course_name'] . "</a><br>";
+                                } 
+                            }
+                            echo "</td>";
+
+                            // dataset and tools for topic text mining (id = 1).
+                            if ($row1['topic_id'] == 1) {
+                                echo "<td><a href='materials/topic-1/data/data.zip' download>Training/Testing/Features</a></td>";
+                                echo "<td>";
+                                echo "<a href='materials/topic-1/tools/hw1_get_pubmed_abstracts.zip'>Data_Preparation</a><br>";
+                                echo "<a href='materials/topic-1/tools/LightSIDE.zip'>LightSIDE</a><br>";
+                                echo "<a href='materials/topic-1/tools/hw2_feature_selection_stats.zip'>Feature_Selection</a><br>";
+                                echo "<a href='materials/topic-1/tools/classification_feature_excercise.zip'>Classification</a>";
+                                echo "</td>";
+                            }
+                        } else 
+                        // after 2018, active links for topics and courses.
+                        {
+                            echo "<tr><td><a href=topic.php?topic=" 
+                                . $row1['topic_id'] . ">" . $row1['topic_name'] . "</a></td>";
+
+                            if ($result2 = $mysqli->query($query2)) {
+                                while ($row2 = $result2->fetch_assoc()) { 
+                                    echo $row2['course_name'] . "<br>";
                             }
                         }
-                        echo "</td><td>" . $row1['lecturer'] . "</td></tr>";
+
+                        // echo "</td><td>" . $row1['lecturer'] . "</td></tr>";
                     }
                 }
+            }
             ?>
         </table>
     </section>
