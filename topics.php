@@ -86,21 +86,21 @@
                                 echo "<a href='materials/topic-1/tools/LightSIDE.zip'>LightSIDE</a><br>";
                                 echo "<a href='materials/topic-1/tools/hw2_feature_selection_stats.zip'>Feature_Selection</a><br>";
                                 echo "<a href='materials/topic-1/tools/classification_feature_excercise.zip'>Classification</a>";
-                                echo "</td>";
+                                echo "</td></tr>";
+                            } else {
+                                echo "<td></td><td></td></tr>";
                             }
                         } else 
                         // after 2018, active links for topics and courses.
                         {
                             echo "<tr><td><a href=topic.php?topic=" 
-                                . $row1['topic_id'] . ">" . $row1['topic_name'] . "</a></td>";
+                                . $row1['topic_id'] . ">" . $row1['topic_name'] . "</a></td><td>";
 
                             if ($result2 = $mysqli->query($query2)) {
                                 while ($row2 = $result2->fetch_assoc()) { 
                                     echo $row2['course_name'] . "<br>";
                             }
                         }
-
-                        // echo "</td><td>" . $row1['lecturer'] . "</td></tr>";
                     }
                 }
             }

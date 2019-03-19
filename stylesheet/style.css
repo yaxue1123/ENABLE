@@ -93,7 +93,7 @@ h3 {
 
 .carousel-caption {
     background-color: rgba(0, 0, 0, 0.3);
-    bottom: 25%;
+    bottom: 30%;
 }
 
 footer {
@@ -199,16 +199,16 @@ footer {
     border-color: rgb(151, 172, 187);
   }
 
-  .lecturer-2-col {
-      display: flex;
-      flex-direction: row;
-  }
-
-  .lecturer-2-col img {
+#lecturer-table img {
+    width: 250px;
+    height: 250px;
     border-bottom: 1em solid #4B9CD3;
     margin-right: 2em;
-    width: 100%;
-  }
+  } 
+
+#lecturer-table tr td {
+    padding-bottom: 1em;
+}
 
 .form-signin {
     padding: 5% 30%;

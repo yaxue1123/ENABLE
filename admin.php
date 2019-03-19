@@ -200,14 +200,19 @@
                         <form>
                             <div class="form-group">
                                 <label for="course-name">Course Name</label>
-                                <input type="email" class="form-control" id="course-name">
+                                <input class="form-control" id="course-name">
                             </div>
                             <div class="form-group">
                                 <label for="course-topic">Topic</label>
                                 <select class="form-control" id="course-topic">
-                                <option>Texting Mining</option>
-                                <option>Genomics</option>
-                                <option>Vicent Carrasco</option>
+                                <?php
+                                    if ($result_edit_topic = $mysqli->query($query_edit_topic)) {
+                                        while ($row_edit_topic = $result_edit_topic->fetch_assoc()) {
+                                            // --------- Topic Name ----------
+                                            echo "<option>" . $row_edit_topic['topic_name'] . "</option>";
+                                        }
+                                    }
+                                ?>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -269,7 +274,7 @@
                         </table>    
                     </div>
                     <div class="tab-pane fade" id="v-pills-add-lecturer" role="tabpanel" aria-labelledby="v-pills-add-lecturer-tab">
-                        <form action="src_admin/add_lecturer.php" method="POST">
+                        <form action="src_admin/add_lecturer.php" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="lecturer-name">Lecturer Name</label>
                                 <input class="form-control" name="lecturer-name">
@@ -292,7 +297,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="lecturer-photo">Upload Headpic</label>
-                                <input type="file" class="form-control-file" id="lecturer-photo">
+                                <input type="file" class="form-control-file" name="lecturer-photo" id="lecturer-photo">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

@@ -46,23 +46,25 @@
     </nav>
     <section>
         <h1 class="topic-head">Lecturers</h1>
-        <div class="lecturer-2-col">
-            <?php
-                require "dbconnect.php";
-                $query = "SELECT * FROM lecturer";
-                if ($result = $mysqli->query($query)) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<img src='./image/lecturer/lecturer" . $row['lecturer_id'] . ".jpg'>";
-                        echo "<div><h2>" . $row['lecturer_name'] . "</h2>";
-                        echo "<p>" . $row['about'];
-                        if ($row['url'] != "") {
-                            echo "<a href='" . $row['url'] . "'>View Portfolio</a>";
+        <table id="lecturer-table">
+            <tbody>
+                <?php
+                    require "dbconnect.php";
+                    $query = "SELECT * FROM lecturer";
+                    if ($result = $mysqli->query($query)) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr><td><img src='./image/lecturer/lecturer" . $row['lecturer_id'] . ".jpg'></td>";
+                            echo "<td><h2>" . $row['lecturer_name'] . "</h2>";
+                            echo "<p>" . $row['about'];
+                            if ($row['url'] != "") {
+                                echo "<a href='" . $row['url'] . "'>View Portfolio</a>";
+                            }
+                            echo "</p></td></tr>";
                         }
-                        echo "</p></div>";
                     }
-                }
-            ?>
-        </div>
+                ?>
+            </tbody>
+        </table>
     </section>
     <footer>
         <div class="footer-col1">

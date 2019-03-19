@@ -56,23 +56,17 @@
                 <img src="image/home_1-min.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h3 class="slideshow-caption"> Learn about Health Informatics, Data Analytics and Visualization here.</h3>
-                    <a class="btn btn-primary" href="https://enable.unc.edu/apply-to-summer-bootcamp/">
-                            Apply to Boot Camp</a>
                 </div>
                 </div>
                 <div class="carousel-item">
                 <img src="image/home_2-min.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h3 class="slideshow-caption"> Gain knowledge of principles of biomedical health informatics.</h3>
-                    <a class="btn btn-primary" href="https://enable.unc.edu/apply-to-summer-bootcamp/">
-                            Apply to Boot Camp</a>
                 </div>
                 </div>
                 <div class="carousel-item">
                 <div class="carousel-caption d-none d-md-block">
                     <h3 class="slideshow-caption"> Explore advanced traning and careers in biomedical health informatics field.</h3>
-                    <a class="btn btn-primary" href="https://enable.unc.edu/apply-to-summer-bootcamp/">
-                            Apply to Boot Camp</a>
                 </div>
                 <img src="image/home_3-min.jpg" class="d-block w-100" alt="...">
                 </div>
