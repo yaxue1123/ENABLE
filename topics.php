@@ -98,7 +98,8 @@
 
                             if ($result2 = $mysqli->query($query2)) {
                                 while ($row2 = $result2->fetch_assoc()) { 
-                                    echo $row2['course_name'] . "<br>";
+                                    echo "<a href='course.php?course=" . $row2['course_id'] . "'>" . 
+                                    $row2['course_name'] . "</a><br>"; 
                             }
                         }
                     }

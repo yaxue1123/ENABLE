@@ -45,23 +45,52 @@
         </ul>
     </nav>
     <section>
-        <h1 class="topic-head">Topic: Text Mining</h1>
-        <h2>Lecture 1 - Introduction to Text Mining</h2>
+            <?php 
+                require "dbconnect.php";
+                $course_id = $_GET['course'];
+                $course_number = 0;
+                $course_name = '';
+                $topic_id = 0;
+                $slide_link = '';
+                $overview = '';
+                $query_course = "SELECT * FROM course WHERE course_id = " . $course_id;
+                if ($result = $mysqli->query($query_course)) {
+                    while ($row = $result->fetch_assoc()) { 
+                        $course_number = $row['course_number'];
+                        $topic_id = $row['topic_id'];
+                        $slide_link = $row['slide_link'];
+                        $course_name = $row['course_name'];
+                        $overview = $row['overview'];
+                    } 
+                }
+            ?>
+        <h1 class="topic-head">Topic: 
+            <?php 
+                $query_topic = "SELECT * FROM curriculum WHERE topic_id = " . $topic_id;
+                if ($result = $mysqli->query($query_topic)) {
+                    while ($row = $result->fetch_assoc()) { 
+                        echo $row['topic_name'];
+                    } 
+                }
+            ?>
+        </h1>
+        <h2>Lecture 
+            <?php 
+                echo $course_number;
+                echo " - " . $course_name;
+            ?>
+        </h2>
         <h3>Overview</h3>
         <p>
-            This lecture will answer questions including what is text mining, applications of text mining, 
-            and the big picture of predictive as well as exploratory analysis of text. Also, this lecture includes 
-            a sample application of topic categorization and visualization and a hands-on practce to trigger
-            better and deeper understanding.
+            <?php 
+                echo $overview;
+            ?>
         </p>
         <div class="video-wrapper">
-            <iframe src="https://adminliveunc-my.sharepoint.com/personal/shikhay_ad_unc_edu/_layouts/15/Doc.aspx?sourcedoc={95ade2a3-bd8c-47d3-8b00-587901ce5c96}&amp;action=embedview&amp;wdAr=1.7777777777777777" width="350px" height="221px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office Online</a>.</iframe> 
-        </div>
-        <h3>Review questions</h3>
-        <span class="course-question"><i class="fas fa-plus"></i> What is token and wokenization?</span>
-        <div class="course-answer">
-            Token is a unit of text analysis, usually a word or other atomic parse element.
-            And tokenization is the process of splitting text into terms of tokens.
+            <?php
+                echo '<iframe src="' . $slide_link . '" width="350px" height="221px" frameborder="0">';
+                echo 'This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office Online</a>.</iframe>';
+            ?>
         </div>
         <h3>Materials</h3>
         <table class="table table-striped">
@@ -114,18 +143,5 @@
             <a class="btn btn-second" href="login.php">Admin Login</a>
         </div>
     </footer>
-    <script>
-        $(document).ready(() => {
-            $(".course-question").click(() =>{
-                $(".course-answer").toggle(100, () => {
-                    if ($(".course-question i").attr("class") === "fas fa-plus") {
-                        $(".course-question i").attr("class", "fas fa-minus");
-                    } else {
-                        $(".course-question i").attr("class", "fas fa-plus");
-                    }
-                })
-            })
-        })
-    </script>
 </body>
 </html>
