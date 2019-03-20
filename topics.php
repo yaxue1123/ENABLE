@@ -72,8 +72,8 @@
                             if ($result2 = $mysqli->query($query2)) {
                                 while ($row2 = $result2->fetch_assoc()) { 
                                     // course material.
-                                    echo "<a href='materials/topic-" . $row1['topic_id'] . "/slides/" . 
-                                    $row1['topic_id'] . "." . $row2['course_id'] .".pdf'>" . $row2['course_name'] . "</a><br>";
+                                    echo "<a target='_blank' href='materials/topic-" . $row1['topic_id'] . "/slides/" . 
+                                    $row1['topic_id'] . "." . $row2['course_number'] .".pdf'>" . $row2['course_name'] . "</a><br>";
                                 } 
                             }
                             echo "</td>";
@@ -101,6 +101,8 @@
                                     echo "<a href='course.php?course=" . $row2['course_id'] . "'>" . 
                                     $row2['course_name'] . "</a><br>"; 
                             }
+
+                            echo "</td><td></td><td></td></tr>";
                         }
                     }
                 }

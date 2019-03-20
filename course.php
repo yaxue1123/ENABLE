@@ -95,19 +95,14 @@
         <h3>Materials</h3>
         <table class="table table-striped">
             <tr>
-                <td>Slide</td>
-                <td>Transcript</td>
-                <td>Video</td>
+                <td>Slide Download</td>
             </tr>
             <tr>
                 <td>
-                    <a href="materials/text-mining/slides/1.TextMining.Introduction.pdf" download>pdf</a>
-                </td>
-                <td>
-                    <a href="#" download="">txt</a>
-                </td>
-                <td>
-                    <a href="#" download>mp4</a>
+                    <?php
+                        echo "<a href='materials/topic-" . $topic_id . "/slides/" 
+                            .$topic_id . "." . $course_number .".pdf' download>Lecture Slides</a>"
+                    ?>
                 </td>
             </tr>
         </table>
