@@ -62,9 +62,6 @@
             <li class="nav-item">
                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">SESSION</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">DOWNLOAD</a>
-            </li>
             </ul>
             <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -112,19 +109,6 @@
                     }
                 ?>         
                 </table>
-            </div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                <?php 
-                    if ($result = $mysqli->query($query)) {
-                        while ($row = $result->fetch_assoc()) { 
-                            // --------- Course material ----------
-                            echo "<h2>Course Materials</h2>" . 
-                                "<p>Download zip file of all slides, data sets and tools here.</p>";
-                            echo "<a href='materials/topic-". $row['topic_id'] .
-                                ".zip' download>topic-" . $row['topic_id'] . ".zip</a>";
-                        }
-                    }
-                ?>
             </div>
         </div>
     </section>

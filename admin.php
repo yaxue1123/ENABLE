@@ -161,10 +161,6 @@
                                 <label for="topic-requirement">Requirements</label>
                                 <textarea class="form-control" name="topic-requirement" rows="3"></textarea>
                             </div>
-                            <div class="form-group">
-                                <label for="topic-material">Upload Topic Materials</label>
-                                <input type="file" class="form-control-file" id="topic-material">
-                            </div>
                             <button id="btn-add-topic" type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
