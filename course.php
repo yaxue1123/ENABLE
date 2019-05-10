@@ -92,20 +92,6 @@
                 echo 'This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office Online</a>.</iframe>';
             ?>
         </div>
-        <h3>Materials</h3>
-        <table class="table table-striped">
-            <tr>
-                <td>Slide Download</td>
-            </tr>
-            <tr>
-                <td>
-                    <?php
-                        echo "<a href='materials/topic-" . $topic_id . "/slides/" 
-                            .$topic_id . "." . $course_number .".pdf' download>Lecture Slides</a>"
-                    ?>
-                </td>
-            </tr>
-        </table>
     </section>
     <footer>
         <div class="footer-col1">

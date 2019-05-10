@@ -1,6 +1,6 @@
 <?php
 // use separate dbconnect.php to add security and condense code
-$h = 'localhost:3306';
+$h = 'localhost';
 $u = 'root';
 $p = '';
 $dbname = 'enable';
