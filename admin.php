@@ -216,20 +216,8 @@
                                 <textarea class="form-control" id="course-description" rows="3"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="course-review-question">Review Questions</label>
-                                <textarea class="form-control" id="course-review-question" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="course-slide">Upload Slide</label>
-                                <input type="file" class="form-control-file" id="course-slide">
-                            </div>
-                            <div class="form-group">
-                                <label for="course-transcript">Upload Transcript</label>
-                                <input type="file" class="form-control-file" id="course-transcript">
-                            </div>
-                            <div class="form-group">
-                                <label for="course-video">Upload Video</label>
-                                <input type="file" class="form-control-file" id="course-video">
+                                <label for="course-slide">Slide Link from OneDrive</label>
+                                <input class="form-control" id="course-slide" rows="3"></input>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
@@ -249,15 +237,15 @@
                                             $course_number = $mysqli->query($query_course_number)->fetch_assoc()['count(*)']; // number of all courses in this topic.
                                             
                                             // --------- Topic Name ----------                           
-                                            echo "<tr><td rowspan='" . (int)$course_number . "'><a href=topic.php?topic=" . 
+                                            echo "<tr style='width: 20%'><td rowspan='" . (int)$course_number . "'><a href=topic.php?topic=" . 
                                                 $row_edit_topic['topic_id'] . ">" . $row_edit_topic['topic_name'] . "</a></td>"; 
                                             
                                             if ($result_edit_course = $mysqli->query($query_edit_course)) {
                                                 while ($row_edit_course = $result_edit_course->fetch_assoc()) { 
                                                     // --------- Courses----------
-                                                    echo "<td>" . $row_edit_course['course_name'] . "</td>";
+                                                    echo "<td style='width: 55%'>" . $row_edit_course['course_name'] . "</td>";
                                                     // --------- Edit Button ----------
-                                                    echo"<td><button class='btn btn-primary' id='course-edit-" . 
+                                                    echo"<td style='width: 25%'><button class='btn btn-primary' id='course-edit-" . 
                                                         $row_edit_course['course_id'] . "'>". "Edit</button>";
                                                     // --------- Delete Button ----------
                                                     echo"<button class='btn btn-primary' id='course-delete-" . 

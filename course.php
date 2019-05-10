@@ -80,12 +80,11 @@
                 echo " - " . $course_name;
             ?>
         </h2>
-        <h3>Overview</h3>
         <p>
             <?php 
                 echo $overview;
             ?>
-        </p>
+        </p>    
         <div class="video-wrapper">
             <?php
                 echo '<iframe src="' . $slide_link . '" width="350px" height="221px" frameborder="0">';
