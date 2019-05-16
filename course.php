@@ -37,7 +37,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://learnonline.chip.unc.edu:8000/hub/login">JUPYTERHUB</a>
+                <a class="nav-link" href="https://healthit.unc.edu:8000/hub/login">JUPYTERHUB</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="lecturer.php">LECTURERS</a>
