@@ -64,16 +64,19 @@
                     while ($row1 = $result1->fetch_assoc()) {
                         $query2 = "SELECT * FROM course WHERE topic_id = " . $row1['topic_id'];
 
-                        // for year 2018, only represent download link of slides.
-                        // no detailed info for year 2018.
-                        if($row1['year'] == '2018') {
+                        if($row1['year'] == '2018' || $row1['year'] == '2019') {
                             echo "<tr><td>" . $row1['topic_name'] . "</td>";
                             echo "<td>";
                             if ($result2 = $mysqli->query($query2)) {
                                 while ($row2 = $result2->fetch_assoc()) { 
-                                    // course material.
-                                    echo "<a target='_blank' href='materials/topic-" . $row1['topic_id'] . "/slides/" . 
-                                    $row1['topic_id'] . "." . $row2['course_number'] .".pdf'>" . $row2['course_name'] . "</a><br>";
+                                    // if has course material, provide link, or disable the link.
+                                    if ($row2['has_material'] == 1) {
+                                        echo "<a target='_blank' href='materials/topic-" . $row1['topic_id'] . "/slides/" . 
+                                        $row1['topic_id'] . "." . $row2['course_number'] .".pdf'>" . $row2['course_name'] . "</a><br>";
+                                    }
+                                    else {
+                                        echo $row2['course_name'] . "<br>";
+                                    }
                                 } 
                             }
                             echo "</td>";
@@ -91,7 +94,7 @@
                                 echo "<td></td><td></td></tr>";
                             }
                         } else 
-                        // after 2018, active links for topics and courses.
+                        // after 2019, active links for topics and courses.
                         {
                             echo "<tr><td><a href=topic.php?topic=" 
                                 . $row1['topic_id'] . ">" . $row1['topic_name'] . "</a></td><td>";
