@@ -30,7 +30,7 @@
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="topics.php" role="button" aria-haspopup="true" aria-expanded="false">ENABLE PROJECT</a>
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="topics.php" role="button" aria-haspopup="true" aria-expanded="false">SCHEDULE</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="https://enable.unc.edu/boot-camp-day-by-day-schedule/">YEAR 2019</a>
                     <a class="dropdown-item" href="https://enable.unc.edu/2018-hidav-participants/">YEAR 2018</a>
@@ -59,6 +59,12 @@
             </tr>
             <?php
                 $query1 = "SELECT * FROM curriculum WHERE year = " . $year;
+
+                // slide 4.0 for 2019.
+                if($year == '2019') {
+                    echo "<tr><td>Introduction</td>";
+                    echo "<td><a target='_blank' href='materials/topic-4/slides/4.0.pdf'>Introduction to HiDAV Summer Bootcamp</a></td></tr>";
+                }
 
                 if ($result1 = $mysqli->query($query1)) {
                     while ($row1 = $result1->fetch_assoc()) {
@@ -90,7 +96,12 @@
                                 echo "<a href='materials/topic-1/tools/hw2_feature_selection_stats.zip'>Feature_Selection</a><br>";
                                 echo "<a href='materials/topic-1/tools/classification_feature_excercise.zip'>Classification</a>";
                                 echo "</td></tr>";
-                            } else {
+                            } 
+                            else if ($row1['topic_id'] == 4){
+                                echo "<td><a href='materials/topic-4/data/Clinical_Case_Asthma.pdf'>In-Class Exercise: Predicting Asthma Healthcare Cost</a></td>";
+                                echo "<td>";
+                            }
+                            else {
                                 echo "<td></td><td></td></tr>";
                             }
                         } else 
